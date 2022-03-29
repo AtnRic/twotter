@@ -20,4 +20,3 @@ base de donnée :
   * id
   * id du profil
   * chemin vers le média si média
-  *
