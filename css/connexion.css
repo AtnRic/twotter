@@ -1,0 +1,107 @@
+body{
+    display:grid;
+    grid-template-columns: 50vw, 50vw;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.pad{
+    padding: 40px;
+}
+
+.left{
+    background-color: white;
+    height: 100vh;
+    grid-column: 1;
+    width: 40vw;
+}
+
+.right{
+    background-color: #119afb;
+    height: 100vh;
+    grid-column: 2;
+    width: 60vw;
+}
+
+
+
+h1{
+    font-size: 5em;
+}
+h2{
+    font: 3em;
+}
+
+.button{
+    display: inline-block;
+    text-decoration: none;
+    padding: 3px 10px 3px 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: var(--bgc);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: white;
+    height: 25px;
+    width: 150px;
+    transition: padding 1s;
+    transition: background-color 0.8s;
+    transition: color 0.8s; 
+    width: 200px;
+  }
+
+.button:hover{
+    color: var(--bgc);
+    background-color: white;
+    border-color: white;
+    color: #119afb;
+    
+  }
+
+
+/*responsive*/
+  
+  @media only screen and (max-width: 2000px) {
+    body{
+        grid-template-columns: 50vw, 50vw;
+    }
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    body{
+        grid-template-columns: 35vw, 55vw;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    body{
+        grid-template-columns: 0vw, 100vw;
+    }
+    .left{
+        display: none;
+    }
+    .right{
+        width: 100vw;
+    }  
+    .pad{
+        text-align: center;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+      h1{font-size: 3em;}
+      
+  }
+
+  @media only screen and (max-width: 300px) {
+    
+    h1{font-size: 2em;}
+    h2{font: 1em;}
+    .pad{
+        padding: 20px;
+    }
+  }
