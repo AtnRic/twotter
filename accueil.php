@@ -20,7 +20,7 @@
             <h2>Rejoignez Twotter dès aujourd'hui.</h2>
             <a class="button" href="#inscription">S'inscrire</a>
             <h3>Vous avez déjà un compte ?</h3>
-            <a class="button" href="red-november.html">Se connecter</a>
+            <a class="button" href="#connexion">Se connecter</a>
         </div>
     </div>
 
@@ -28,28 +28,30 @@
     <div id="inscription" class="overlay">
         <div class="popup">
             <img class ='logo' src="images/bat.png" alt="logo">
+            <h1>Créez votre compte</h1>
             <form action="/action_page.php">
                 <input type="text" id="nom" name="nom" placeholder="Nom"><br>
                 <input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
                 <input type="text" id="mail" name="mail" placeholder="Adresse mail"><br><br>
 
-            <input type="submit" id='sub' value="Envoyer">
+            <input type="submit" class='sub' value="Envoyer">
             </form> 
-            <a class="close" href="#">&times;</a>
+            <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
 
         </div>
     </div>
+    <!--Popup de connexion-->
     <div id="connexion" class="overlay">
         <div class="popup">
             <img class ='logo' src="images/bat.png" alt="logo">
+            <h1>Connectez-vous</h1>
             <form action="/action_page.php">
-                <input type="text" id="nom" name="nom" placeholder="Nom"><br>
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
-                <input type="text" id="mail" name="mail" placeholder="Adresse mail"><br><br>
-
-            <input type="submit" id='sub' value="Envoyer">
+                <input type="text" id="login" name="login" placeholder="Pseudo"><br>
+                <input type="text" id="mpd" name="mpd" placeholder="Mot de passe"><br>
+            <input type="submit" class='sub' value="Envoyer">
             </form> 
-            <a class="close" href="#">&times;</a>
+            <a class="mdp" href="">Mot de passe oublié ?</a>
+            <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
 
         </div>
     </div>
