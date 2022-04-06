@@ -30,9 +30,9 @@
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Créez votre compte</h1>
             <form action="/action_page.php">
-                <input type="text" id="nom" name="nom" placeholder="Nom"><br>
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
-                <input type="text" id="mail" name="mail" placeholder="Adresse mail"><br><br>
+                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo"><br>
+                <input type="password" id="mdp" name="mdp" placeholder="Mot de passe"><br>
+                <input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe"><br><br>
 
             <input type="submit" class='sub' value="Envoyer">
             </form> 
@@ -47,7 +47,7 @@
             <h1>Connectez-vous</h1>
             <form action="/action_page.php">
                 <input type="text" id="login" name="login" placeholder="Pseudo"><br>
-                <input type="text" id="mpd" name="mpd" placeholder="Mot de passe"><br>
+                <input type="password" id="mpd" name="mpd" placeholder="Mot de passe"><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
             <a class="mdp" href="">Mot de passe oublié ?</a>
