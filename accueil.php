@@ -18,10 +18,41 @@
         <div class="pad">
             <h1>Ça se passe<br>maintenant.</h1>
             <h2>Rejoignez Twotter dès aujourd'hui.</h2>
-            <a class="button" href="pages/inscription.php">S'inscrire</a>
+            <a class="button" href="#inscription">S'inscrire</a>
             <h3>Vous avez déjà un compte ?</h3>
             <a class="button" href="red-november.html">Se connecter</a>
         </div>
     </div>
+
+    <!--Pop-up d'inscription-->
+    <div id="inscription" class="overlay">
+        <div class="popup">
+            <img class ='logo' src="images/bat.png" alt="logo">
+            <form action="/action_page.php">
+                <input type="text" id="nom" name="nom" placeholder="Nom"><br>
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
+                <input type="text" id="mail" name="mail" placeholder="Adresse mail"><br><br>
+
+            <input type="submit" id='sub' value="Envoyer">
+            </form> 
+            <a class="close" href="#">&times;</a>
+
+        </div>
+    </div>
+    <div id="connexion" class="overlay">
+        <div class="popup">
+            <img class ='logo' src="images/bat.png" alt="logo">
+            <form action="/action_page.php">
+                <input type="text" id="nom" name="nom" placeholder="Nom"><br>
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
+                <input type="text" id="mail" name="mail" placeholder="Adresse mail"><br><br>
+
+            <input type="submit" id='sub' value="Envoyer">
+            </form> 
+            <a class="close" href="#">&times;</a>
+
+        </div>
+    </div>
+     
 </body>
 </html>
