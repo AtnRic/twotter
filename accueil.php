@@ -40,9 +40,12 @@
 
         </div>
     </div>
+
+    
     <!--Popup de connexion-->
     <div id="connexion" class="overlay">
         <div class="popup">
+            <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Connectez-vous</h1>
             <form action="/action_page.php">
@@ -51,7 +54,7 @@
             <input type="submit" class='sub' value="Envoyer">
             </form> 
             <a class="mdp" href="">Mot de passe oublié ?</a>
-            <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
+            
 
         </div>
     </div>
