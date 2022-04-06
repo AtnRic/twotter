@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    
+
     <!--Popup de connexion-->
     <div id="connexion" class="overlay">
         <div class="popup">
@@ -53,7 +53,7 @@
                 <input type="password" id="mpd" name="mpd" placeholder="Mot de passe"><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
-            <a class="mdp" href="">Mot de passe oublié ?</a>
+            <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>
             
 
         </div>
