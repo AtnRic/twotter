@@ -29,9 +29,10 @@
         <div class="popup">
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Créez votre compte</h1>
-            <form action="/action_page.php">
+            <form action="" method='POST'>
                 <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo"><br>
-                <input type="password" id="mdp" name="mdp" placeholder="Mot de passe"><br>
+                <input type="password" id="mdpin" name="mdpin" placeholder="Mot de passe (8 caractères, maj, min et chiffres)"><br>
+                <?php if(isset($mdperr)){echo "<p style='color:white'>$mdperr</p>";}?>
                 <input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe"><br><br>
 
             <input type="submit" class='sub' value="Envoyer">
@@ -48,16 +49,104 @@
             <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Connectez-vous</h1>
-            <form action="/action_page.php">
+            <form action="accueil.php" method='POST'>
                 <input type="text" id="login" name="login" placeholder="Pseudo"><br>
-                <input type="password" id="mpd" name="mpd" placeholder="Mot de passe"><br>
+                <input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe"><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
-            <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>
-            
-
+            <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>  
         </div>
     </div>
+
+
+
      
+    <?php
+    include 'tools/_connect.php';
+
+    //on met la bordure de la case mot de passe (inscription) en rouge si le mot de passe ne respecte pas le pattern
+        if(isset($_POST['mdpin'])){
+            if(!passwd($_POST['mdpin'])){
+                echo "<style>
+                .popup #mdpin{
+                    outline: none;
+                    border-style: solid;
+                    border-radius: 5px;
+                    border-width: 2px;
+                    border-color:red;
+                }
+                </style>"; 
+            }
+            //on profite du isset pour le mot de passe pour vérifier que les autres champs soient biens remplis
+            if(empty($_POST['pseudo'])){
+                echo "<style>
+                    .popup #pseudo{
+                        outline: none;
+                        border-style: solid;
+                        border-radius: 5px;
+                        border-width: 2px;
+                        border-color:red;
+                    }
+                    </style>"; 
+            }
+            if(empty($_POST['mdpin'])){
+                echo "<style>
+                    .popup #mdpin{
+                        outline: none;
+                        border-style: solid;
+                        border-radius: 5px;
+                        border-width: 2px;
+                        border-color:red;
+                    }
+                    </style>"; 
+            }
+            if(empty($_POST['verifmdp'])){
+                echo "<style>
+                    .popup #verifmdp{
+                        outline: none;
+                        border-style: solid;
+                        border-radius: 5px;
+                        border-width: 2px;
+                        border-color:red;
+                    }
+                    </style>"; 
+            }
+
+        }
+        else{
+            echo "<style>
+            .popup input[type=text]:focus, input[type=password]:focus{
+                outline: none;
+                border-style: solid;
+                border-radius: 5px;
+                border-width: 2px;
+                border-color:#119afb;
+            }
+            </style>";
+        }
+
+    //on vérifie les mdp (inscription)
+        if(isset($_POST['mdpin'])&& isset($_POST['mdpin'])){
+            if(!verifpasswd($_POST['mdpin'], $_POST['verifmdp'])){
+                echo "<style>
+                .popup #verifmdp, #mdpin{
+                    outline: none;
+                    border-style: solid;
+                    border-radius: 5px;
+                    border-width: 2px;
+                    border-color:red;
+                }
+                </style>"; 
+            }
+        }
+
+        
+        
+
+    ?>
+
+
+
+
 </body>
 </html>
