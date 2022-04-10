@@ -1,5 +1,9 @@
 <?php
-session_start();
+    session_start();
+    if (isset($_COOKIE['pseudo'])&& isset($_COOKIE['mdp_hash'])) { //si le cookie existe
+        //on vérifie dans la base de donnée et on connecte au bon compte
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +38,10 @@ session_start();
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Créez votre compte</h1>
             <form action="" method='POST'>
-                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo"><br>
-                <input type="password" id="mdpin" name="mdpin" placeholder="Mot de passe (8 caractères, maj, min et chiffres)"><br>
-                <input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe"><br><br>
-                <input type="submit" class='sub' value="Envoyer">
+                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required><br>
+                <input type="password" id="mdpin" name="mdpin" placeholder="Mot de passe (8 caractères, maj, min et chiffres)" required><br>
+                <input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe" required><br><br>
+                <input type="submit" class='sub' name='sub' value="Envoyer">
             </form> 
             <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
         </div>
@@ -51,13 +55,15 @@ session_start();
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Connectez-vous</h1>
             <form action="accueil.php" method='POST'>
-                <input type="text" id="login" name="login" placeholder="Pseudo"><br>
-                <input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe"><br>
+                <input type="text" id="login" name="login" placeholder="Pseudo" required><br>
+                <input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe" required><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
             <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>  
         </div>
     </div>
+</body>
+
 
 
 
@@ -149,14 +155,20 @@ session_start();
                 $count++;
             }
         }
-        //si les 3 conditions sont vérifiées, on redirige vers la page suivante
+
+        //si les 3 conditions sont vérifiées :
         if($count==3){
-            header('Location: pages/mdp.html');
+            $login= $_POST['pseudo'];
+            $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
+            $_SESSION["pseudo"]=$login; //Variable de session "pseudo"
+            if (!isset($_COOKIE['pseudo']) && !isset($_COOKIE['mdp_hash'])){
+                setcookie("login", $login, time() + (3600 * 24 * 365));
+                setcookie("mdp_hash", $mdp_hash, time() + (3600 * 24 * 365));
+            }
+            //ajouter utilisateur dans la base de données
+            $newURL = "pages/mdp.html";
+            header('Location: '.$newURL);
+            die();
         }
     ?>
-
-
-
-
-</body>
 </html>
