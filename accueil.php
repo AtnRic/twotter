@@ -32,7 +32,6 @@
             <form action="" method='POST'>
                 <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo"><br>
                 <input type="password" id="mdpin" name="mdpin" placeholder="Mot de passe (8 caractères, maj, min et chiffres)"><br>
-                <?php if(isset($mdperr)){echo "<p style='color:white'>$mdperr</p>";}?>
                 <input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe"><br><br>
 
             <input type="submit" class='sub' value="Envoyer">
@@ -63,7 +62,7 @@
      
     <?php
     include 'tools/_connect.php';
-
+    $count = 0;
     //on met la bordure de la case mot de passe (inscription) en rouge si le mot de passe ne respecte pas le pattern
         if(isset($_POST['mdpin'])){
             if(!passwd($_POST['mdpin'])){
@@ -77,7 +76,10 @@
                 }
                 </style>"; 
             }
-            //on profite du isset pour le mot de passe pour vérifier que les autres champs soient biens remplis
+            else{
+                $count++;
+            }
+            //on profite du isset pour le mot de passe pour verifier que les autres champs soient biens remplis
             if(empty($_POST['pseudo'])){
                 echo "<style>
                     .popup #pseudo{
@@ -88,6 +90,9 @@
                         border-color:red;
                     }
                     </style>"; 
+            }
+            else{
+                $count++;
             }
             if(empty($_POST['mdpin'])){
                 echo "<style>
@@ -126,7 +131,7 @@
         }
 
     //on vérifie les mdp (inscription)
-        if(isset($_POST['mdpin'])&& isset($_POST['mdpin'])){
+        if(isset($_POST['mdpin']) && isset($_POST['verifmdp'])){
             if(!verifpasswd($_POST['mdpin'], $_POST['verifmdp'])){
                 echo "<style>
                 .popup #verifmdp, #mdpin{
@@ -138,8 +143,14 @@
                 }
                 </style>"; 
             }
+            else{
+                $count++;
+            }
         }
-
+        //si les 3 conditions sont vérifiées, on redirige vers la page suivante
+        if($count==3){
+            header('Location: pages/mdp.html');
+        }
         
         
 
