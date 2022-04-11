@@ -218,6 +218,9 @@ img{
     .pad{
         text-align: center;
     }
+    .logo{
+        display: none;
+    }
     .popup{width: 100%; height: 100vh; margin: 0px 0px; border-radius:0px; padding: 0px;}
     img{margin: 10px;}
     .popup h1{font-size: 1.5em; margin-left: 13.5vw;}
