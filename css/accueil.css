@@ -1,6 +1,6 @@
 body{
     display:grid;
-    grid-template-columns: 50vw, 50vw;
+    grid-template-columns: 40vw 60vw;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
@@ -23,7 +23,6 @@ body{
 .right{
     background-color: #119afb;
     height: 100vh;
-    width: 60vw;
     grid-column: 2;
 }
 
@@ -31,16 +30,12 @@ h1{
     font-size: 5em;
 }
 
-h2{
-    font: 4em;
-}
-
 .button{
     display: inline-block;
     text-decoration: none;
     padding: 3px 10px 3px 10px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
     color: white;
     border-style: solid;
@@ -48,12 +43,10 @@ h2{
     border-radius: 20px;
     border-color: white;
     height: 25px;
-    width: 150px;
     width: 200px;
 }
 
 .button:hover{
-    color: var(--bgc);
     background-color: white;
     border-color: white;
     color: #119afb;
@@ -78,7 +71,6 @@ img{
     padding: 20px;
     background-color: black;
     border-radius: 10px;
-    width: 30%;
     position: relative;
     width: 35vw;
     height: 70vh;
@@ -116,14 +108,11 @@ img{
     border-color: white;
     border-width: 2px;
     border-radius: 50px;
-
 }
 
 .popup .sub:hover{
     background-color: #119afb;
     border: none;
-    
-   
     color: white;
     margin: 10px;
     padding-left: 20px;
@@ -154,7 +143,6 @@ img{
     visibility: hidden;
     opacity: 0; 
     z-index: 2000;
-    
 }
 
 ._close{
@@ -176,9 +164,9 @@ img{
 
 /*responsive*/
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 1100px) {
     body{
-        grid-template-columns: 0vw, 100vw;
+        grid-template-columns: 0 100vw;
     }
     .left{
         display: none;
@@ -189,7 +177,7 @@ img{
     .pad{
         text-align: center;
     }
-    .popup{width: 100%; height: 100vh; margin: 0px 0px; border-radius:0px; padding: 0px;}
+    .popup{width: 100%; height: 100vh; margin: 0 0; border-radius:0; padding: 0;}
     img{margin: 10px;}
     .popup h1{
         font-size: 5em;
@@ -200,7 +188,7 @@ img{
 
   @media only screen and (max-width: 500px) {
     body{
-        grid-template-columns: 0vw, 100vw;
+        grid-template-columns: 0 100vw;
     }
     .left{
         display: none;
@@ -211,7 +199,7 @@ img{
     .pad{
         text-align: center;
     }
-    .popup{width: 100%; height: 100vh; margin: 0px 0px; border-radius:0px; padding: 0px;}
+    .popup{width: 100%; height: 100vh; margin: 0 0; border-radius:0; padding: 0;}
     img{margin: 10px;}
     .popup h1{font-size: 1.5em; margin-left: 13.5vw;}
     h1{font-size: 3em;}

@@ -1,8 +1,10 @@
 <?php
     session_start();
-    if (isset($_COOKIE['pseudo'])&& isset($_COOKIE['mdp_hash'])) { //si le cookie existe
+    if(isset($_COOKIE['login'])&& isset($_COOKIE['mdp_hash'])) { //si le cookie existe
         //on vérifie dans la base de donnée et on connecte au bon compte
-
+        $newURL = "pages/twotter.php";
+        header('Location: '.$newURL);
+        die();
 }
 ?>
 
@@ -166,7 +168,7 @@
                 setcookie("mdp_hash", $mdp_hash, time() + (3600 * 24 * 365));
             }
             //ajouter utilisateur dans la base de données
-            $newURL = "pages/mdp.html";
+            $newURL = "pages/twotter.php";
             header('Location: '.$newURL);
             die();
         }
