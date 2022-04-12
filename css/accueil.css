@@ -23,6 +23,7 @@ body{
 .right{
     background-color: #119afb;
     height: 100vh;
+    width: 60vw;
     grid-column: 2;
 }
 
