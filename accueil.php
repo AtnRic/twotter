@@ -40,9 +40,9 @@
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Créez votre compte</h1>
             <form action="" method='POST'>
-                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required><br>
-                <input type="password" id="mdpin" name="mdpin" placeholder="Mot de passe (8 caractères, maj, min et chiffres)" required><br>
-                <input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe" required><br><br>
+                <label for="pseudo"></label><input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" autofocus required ><br>
+                <label for="mdpin"></label><input type="password" id="mdpin" name="mdpin" placeholder="Mot de passe (8 caractères, maj, min et chiffres)" required><br>
+                <label for="verifmdp"></label><input type="password" id="verifmdp" name="verifmdp" placeholder="Vérification du mot de passe" required><br><br>
                 <input type="submit" class='sub' name='sub' value="Envoyer">
             </form> 
             <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
@@ -57,7 +57,7 @@
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Connectez-vous</h1>
             <form action="accueil.php" method='POST'>
-                <input type="text" id="login" name="login" placeholder="Pseudo" required><br>
+                <input type="text" id="login" name="login" placeholder="Pseudo" autofocus required><br>
                 <input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe" required><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
