@@ -113,7 +113,8 @@
                             <h3>
                                 Prénom Nom
                                 <span class="verif">
-                                <img src="../images/icons/verified_black_24dp.svg" alt="verif"> @pseudo
+                                <img style="width: 20px" src="../images/icons/verified_black_24dp.svg" alt="verif">
+                                    @pseudo
                             </span>
                             </h3>
                         </div>
@@ -121,7 +122,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adisicing elit.</p>
                         </div>
                     </div>
-                    <img src="../images/bat.png" alt="image post">
+                    <img src="../images/image.png" alt="image post">
                     <div class="post_footer">
                         <!--icones commenter, like, etc...-->
                     </div>

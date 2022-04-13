@@ -57,8 +57,8 @@
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Connectez-vous</h1>
             <form action="accueil.php" method='POST'>
-                <input type="text" id="login" name="login" placeholder="Pseudo" autofocus required><br>
-                <input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe" required><br>
+                <label for="login"></label><input type="text" id="login" name="login" placeholder="Pseudo" autofocus required><br>
+                <label for="mpdco"></label><input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe" required><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
             <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>  

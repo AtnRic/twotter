@@ -169,11 +169,26 @@ a{
     height: 40px;
 }
 
+.post_body img{
+    width: 450px;
+    object-fit: contain;
+    border-radius: 20px;
+}
 
+.post_footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
+.verif{
+    margin-right: 5px;
+    font-size: 12px;
+    color: gray;
+}
 
 /*Responsive*/
-@media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1200px){
     body{
 
         grid-template-columns: 70px 60vw 32vw;
