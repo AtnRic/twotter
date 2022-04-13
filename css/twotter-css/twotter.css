@@ -1,20 +1,19 @@
 body{
     display: grid;
-    grid-template-columns: 19vw 50vw 29vw;
-
+    grid-template-columns: 15vw 50vw 32vw;
 }
 
 .left{
     grid-column: 1;
     height: 90vh;
-    margin: 10px;
-    padding: 20px;
-    border-style: solid;
-    border-radius: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
+
 .left img{
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    margin-top: 1vw;
+    margin-left: 1.2vw;
 }
 .center{
     padding: 20px;
@@ -29,6 +28,7 @@ body{
     grid-row: 1;
     border-style: solid;
     border-radius: 30px;
+    margin-bottom: 5px;
 }
 .tl{
     grid-row: 2;
@@ -48,6 +48,9 @@ body{
     width: 50px;
     margin: auto;
 }
+.sidebar{
+    padding-left: 1vw;
+}
 
 
 .image_texte{
@@ -55,7 +58,7 @@ body{
     margin-top: 2px;
     margin-bottom: 2px;
     height: 50px;
-    width: 100%;
+    width: 90%;
     align-items: center;
     align-content: center;
     display: flex;
@@ -79,12 +82,10 @@ body{
 }
 
 .image img{
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
 }
-button{
-    height: 90vw;
-}
+
 
 
 a{
@@ -92,4 +93,78 @@ a{
 }
 .texte{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /*color*/
+}
+
+
+@media only screen and (max-width: 1400px){
+    body{
+
+        grid-template-columns: 70px 60vw 32vw;
+    }
+    .sidebar{
+        padding-left: 0;
+    }
+    a.button{
+        margin: 0;
+        padding: 0;
+    }
+    .left .texte{
+        display: none;
+    }
+    .image_texte{
+        align-items: center;
+        align-content: center;
+        margin: auto;
+        width: 50px;
+        transition-property: none;
+        transition-duration: 0s;
+    }
+    .image_texte:hover{
+        background-color: #ccd6dd;
+    }
+    .left img{
+        height: 50px;
+        margin-top: 0;
+        margin-left: -1px;
+    }
+    .image{
+        margin-left: -5px;
+        border-radius: 40px;
+        transition-property: background-color;
+        transition-duration: 0.15s;
+    }
+    .image:hover{
+        background-color: #ccd6dd;
+    }
+}
+
+/*Resposive*/
+
+@media only screen and (max-width: 1000px){
+    body{
+        grid-template-columns: 50px 90vw 0;
+    }
+    .right{
+    display: none
+    }
+    .left{
+        margin-left: 2px;
+    }
+}
+@media only screen and (max-width: 800px){
+    body{
+        grid-template-columns: 50px 87vw 0;
+    }
+
+}
+@media only screen and (max-width: 700px){
+    body{
+        grid-template-columns: 50px 85vw 0;
+    }
+}
+@media only screen and (max-width: 600px){
+    body{
+        grid-template-columns: 50px 80vw 0;
+    }
 }

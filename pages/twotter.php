@@ -15,7 +15,7 @@
 <body>
 <!--sidebar-->
     <div class="left">
-        <img src="../images/bat.png" alt="logo">
+        <img id="logo" src="../images/bat.png" alt="logo">
         <nav class="sidebar">
             <a class="button" href="">
                 <div class="image_texte">
