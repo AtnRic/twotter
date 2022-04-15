@@ -7,161 +7,147 @@
     <meta name="author" content="Antoine RICHARD, Adrien VERHAEGHE">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twotter - Twoots</title>
-    <link rel="stylesheet" href="../css/twotter-css/twotter-light.css">
     <link rel="stylesheet" href="../css/twotter-css/twotter.css">
     <link rel="icon" type="image/png" href="../images/bat.png" />
 </head>
-<h1>yolo</h1>
 <body>
-<!--sidebar-->
-    <div class="left">
-        <img id="logo" src="../images/bat.png" alt="logo">
-        <!--navbar-->
-        <nav class="sidebar">
-            <a class="button" href="">
-                <div class="image_texte">
-                    <div class="image">
-                        <img src="../images/icons/home_black_24dp.svg" alt="Accueil">
-                    </div>
-                    <div class="texte">
-                        <span>Accueil</span>
-                    </div>
-                </div>
-            </a>
-            <a class="button" href="">
-                <div class="image_texte">
-                    <div class="image">
-                        <img src="../images/icons/trending_up_black_24dp.svg" alt="Tendances">
-                    </div>
-                    <div class="texte">
-                        <span>Tendances</span>
-                    </div>
-                </div>
-            </a>
-            <a class="button" href="">
-                <div class="image_texte">
-                    <div class="image">
-                        <img src="../images/icons/turned_in_not_black_24dp.svg" alt="Enregistré">
-                    </div>
-                    <div class="texte">
-                        <span>Enregistré</span>
-                    </div>
-                </div>
-            </a>
-            <a class="button" href="">
-                <div class="image_texte">
-                    <div class="image">
-                        <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
-                    </div>
-                    <div class="texte">
-                        <span>Profil</span>
-                    </div>
-                </div>
-            </a>
-            <a class="button" href="">
-                <div class="image_texte">
-                    <div class="image">
-                        <img src="../images/icons/settings_black_24dp.svg" alt="Paramètres">
-                    </div>
-                    <div class="texte">
-                        <span>Paramètres</span>
-                    </div>
-                </div>
-            </a>
-            <a class="button" href="">
-                <div class="image_texte">
-                    <div class="image">
-                        <img src="../images/icons/logout_black_24dp.svg" alt="Déconnexion">
-                    </div>
-                    <div class="texte">
-                        <span>Déconnexion</span>
-                    </div>
-                </div>
-            </a>
-        </nav>
-    </div>
-
-
-
-
-    <div class="center">
-        <div class="feed">
-            <!--feed header-->
-            <div class="feed_header">
-                <h2>Accueil</h2>
-            </div>
-            <!--twoot box-->
-            <div class="twoot">
-                <form action="" method="POST">
-                    <div class="twoot_input">
-                        <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
-                        <label>
-                            <textarea placeholder="Quoi de neuf ?"></textarea>
-                        </label>
-                    </div>
-                    <button class="twoot_post">Twooter</button>
-                </form>
-            </div>
-            <!--posts-->
-            <div class="post">
-                <div class="img_profil">
-                    <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
-                </div>
-                <div class="post_body">
-                    <div class="post_header">
-                        <div class="post_header_text">
-                            <h3>
-                                Prénom Nom
-                                <span class="verif">
-                                <img style="width: 20px" src="../images/icons/verified_black_24dp.svg" alt="verif">
-                                    @pseudo
-                            </span>
-                            </h3>
-                        </div>
-                        <div class="post_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adisicing elit.</p>
-                        </div>
-                    </div>
-                    <img src="../images/image.png" alt="image post">
-                    <div class="post_footer">
-                        <!--icones commenter, like, etc...-->
-                    </div>
-                </div>
-            </div>
-            <div class="post">
-                <div class="img_profil">
-                    <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
-                </div>
-                <div class="post_body">
-                    <div class="post_header">
-                        <div class="post_header_text">
-                            <h3>
-                                Prénom Nom
-                                <span class="verif">
-                                <img style="width: 20px" src="../images/icons/verified_black_24dp.svg" alt="verif">
-                                    @pseudo
-                            </span>
-                            </h3>
-                        </div>
-                        <div class="post_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adisicing elit.</p>
-                        </div>
-                    </div>
-                    <img src="../images/image.png" alt="image post">
-                    <div class="post_footer">
-                        <!--icones commenter, like, etc...-->
+    <div class="container">
+        <!--sidebar-->
+        <div class="option_menu">
+            <div class="option_center">
+                <div class="logo">
+                    <!--logo twotter-->
+                    <div class="option">
+                        <div><a href=""><i class="home"></i><span>Accueil</span></a></div>
+                        <div><a href=""><i class="trends"></i><span>Tendances</span></a></div>
+                        <div><a href=""><i class="bookmarks"></i><span>Enregistré</span></a></div>
+                        <div><a href=""><i class="user"></i><span>Profil</span></a></div>
+                        <div><a href=""><i class="settings"></i><span>Paramètres</span></a></div>
+                        <div><a href=""><i class="logout"></i><span>Déconnexion</span></a></div>
+                        <div><button>Twoot</button></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!--content menu-->
+        <div class="content_menu">
+            <div class="prefer">
+                <span>
+                    <a href="">Accueil</a>
+                </span>
+                <span>
+                    <i class="star"></i>
+                </span>
+            </div>
+            <div class="you_tweet_other_tweet">
+                <div class="your_tweet">
+                    <div class="profil_message">
+                        <span><img src="../images/bat.png" alt=""></span>
+                        <span><label><input type="text" placeholder="Quoi de neuf ?"></label></span>
+                    </div>
 
-    <div class="right">
-        <h1>Ça se passe<br>maintenant.</h1>
-        <h2>Rejoignez Twotter dès aujourd'hui.</h2>
-        <a class="button" href="">S'inscrire</a>
-        <h3>Vous avez déjà un compte ?</h3>
-        <a class="button" href="">Se connecter</a>
+                </div>
+                <div class="add_extra">
+                    <div class="image_more">
+                        <span><a href=""><i class="picture"></i></a></span>
+                        <span><a href=""><i class="bars"></i></a></span>
+                        <span><a href=""><i class="smile"></i></a></span>
+                        <span><a href=""><i class="calender"></i></a></span>
+                    </div>
+                    <span><button>Twoot</button></span>
+                </div>
+            </div>
+
+            <div class="others_tweets">
+                <!--each person-->
+                <div class="other_tweet">
+                    <div class="profil_msg">
+                        <div class="other_profile">
+                            <!--photo profil-->
+                            <img src="../images/bat.png" alt="photo de profil">
+                        </div>
+                        <div class="name_msg">
+                            <span><p><b>Prénom Nom</b><i class="check"></i>@pseudo <small>date</small></p></span>
+                            <div class="msg">
+                                <p>Lorem ipsum, dolor sit amet</p>
+                            </div>
+                        </div>
+                        <div class="more_options">
+                            <i class="ellipsis"></i>
+                        </div>
+                    </div>
+                    <div class="image_video">
+                        <img src="../images/image.png" alt="">
+                    </div>
+                    <div class="your_reaction">
+                        <div class="comment"><i class="comment_logo"></i><p>12</p></div>
+                        <div class="retweet"><i class="rt_logo"></i><p>12</p></div>
+                        <div class="like"><i class="like_logo"></i><p>12</p></div>
+                        <div class="bookmark"><i class="bookmark_logo"></i><p>12</p></div>
+                    </div>
+                </div>
+                <div class="other_tweet">
+                    <div class="profil_msg">
+                        <div class="other_profile">
+                            <!--photo profil-->
+                            <img src="../images/bat.png" alt="photo de profil">
+                        </div>
+                        <div class="name_msg">
+                            <span><p><b>Prénom Nom</b><i class="check"></i>@pseudo <small>date</small></p></span>
+                            <div class="msg">
+                                <p>Lorem ipsum, dolor sit amet</p>
+                            </div>
+                        </div>
+                        <div class="more_options">
+                            <i class="ellipsis"></i>
+                        </div>
+                    </div>
+                    <div class="image_video">
+                        <img src="../images/image.png" alt="">
+                    </div>
+                    <div class="your_reaction">
+                        <div class="comment"><i class="comment_logo"></i><p>12</p></div>
+                        <div class="retweet"><i class="rt_logo"></i><p>12</p></div>
+                        <div class="like"><i class="like_logo"></i><p>12</p></div>
+                        <div class="bookmark"><i class="bookmark_logo"></i><p>12</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--trending menu-->
+        <div class="trending_menu">
+            <div class="trending_center">
+                <div class="search">
+                    <label><input type="search" placeholder="Chercher sur Twotter"></label>
+                    <span><i class="search_logo"></i></span>
+                </div>
+                <div class="trending">
+                    <div class="header">
+                        <p>Ce qu'il se passe</p>
+                    </div>
+                    <div class="trends">
+                        <!--each trends-->
+                        <div class="trend">
+                            <div class="trend_msg">
+                                <div class="trend_name">
+                                    <p>twoot trend</p>
+                                </div>
+                                <div class="subject">
+                                    <p>Hello world (subject)</p>
+                                </div>
+                                <div class="trend_with">
+                                    <p>trending with <a href="">#Machinàremplacer</a>,<a href="">#AutreTrucARenplacer</a> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show_more">
+                        <a href="">En voir plus</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
