@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/twotter-css/twotter.css">
     <link rel="icon" type="image/png" href="../images/bat.png" />
 </head>
-
+<h1>yolo</h1>
 <body>
 <!--sidebar-->
     <div class="left">
@@ -96,13 +96,38 @@
                     <div class="twoot_input">
                         <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
                         <label>
-                            <input type="text" placeholder="Quoi de neuf ?"><!--textarea ?-->
+                            <textarea placeholder="Quoi de neuf ?"></textarea>
                         </label>
                     </div>
                     <button class="twoot_post">Twooter</button>
                 </form>
             </div>
             <!--posts-->
+            <div class="post">
+                <div class="img_profil">
+                    <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
+                </div>
+                <div class="post_body">
+                    <div class="post_header">
+                        <div class="post_header_text">
+                            <h3>
+                                Prénom Nom
+                                <span class="verif">
+                                <img style="width: 20px" src="../images/icons/verified_black_24dp.svg" alt="verif">
+                                    @pseudo
+                            </span>
+                            </h3>
+                        </div>
+                        <div class="post_text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adisicing elit.</p>
+                        </div>
+                    </div>
+                    <img src="../images/image.png" alt="image post">
+                    <div class="post_footer">
+                        <!--icones commenter, like, etc...-->
+                    </div>
+                </div>
+            </div>
             <div class="post">
                 <div class="img_profil">
                     <img src="../images/icons/account_circle_black_24dp.svg" alt="Profil">
