@@ -9,6 +9,7 @@
     <title>Twotter - Twoots</title>
     <script src="https://kit.fontawesome.com/235593db07.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/twotter-css/twotter.css">
+    <link rel="stylesheet" href="../css/twotter-css/twotter-light.css">
     <link rel="icon" type="image/png" href="../images/bat.png" />
 </head>
 <body>
@@ -100,10 +101,10 @@
                         <img src="../images/image.png" alt="">
                     </div>
                     <div class="your_reaction">
-                        <div class="comment"><i class="comment_logo"></i><p>12</p></div>
-                        <div class="retweet"><i class="rt_logo"></i><p>12</p></div>
-                        <div class="like"><i class="like_logo"></i><p>12</p></div>
-                        <div class="bookmark"><i class="bookmark_logo"></i><p>12</p></div>
+                        <div class="comment"><i class="fa-solid fa-comment"></i><p>12</p></div>
+                        <div class="retweet"><i class="fa-solid fa-retweet"></i><p>12</p></div>
+                        <div class="like"><i class="fa-solid fa-heart"></i><p>12</p></div>
+                        <div class="bookmark"><i class="fa-solid fa-bookmark"></i><p>12</p></div>
                     </div>
                 </div>
                 <div class="other_tweet">
@@ -126,10 +127,36 @@
                         <img src="../images/image.png" alt="">
                     </div>
                     <div class="your_reaction">
-                        <div class="comment"><i class="comment_logo"></i><p>12</p></div>
-                        <div class="retweet"><i class="rt_logo"></i><p>12</p></div>
-                        <div class="like"><i class="like_logo"></i><p>12</p></div>
-                        <div class="bookmark"><i class="bookmark_logo"></i><p>12</p></div>
+                        <div class="comment"><i class="fa-solid fa-comment"></i><p>12</p></div>
+                        <div class="retweet"><i class="fa-solid fa-retweet"></i><p>12</p></div>
+                        <div class="like"><i class="fa-solid fa-heart"></i><p>12</p></div>
+                        <div class="bookmark"><i class="fa-solid fa-bookmark"></i><p>12</p></div>
+                    </div>
+                </div>
+                <div class="other_tweet">
+                    <div class="profil_msg">
+                        <div class="other_profile">
+                            <!--photo profil-->
+                            <img src="../images/bat.png" alt="photo de profil">
+                        </div>
+                        <div class="name_msg">
+                            <span><p><b>Prénom Nom</b><i class="check"></i>@pseudo <small>date</small></p></span>
+                            <div class="msg">
+                                <p>Lorem ipsum, dolor sit amet</p>
+                            </div>
+                        </div>
+                        <div class="more_options">
+                            <i class="ellipsis"></i>
+                        </div>
+                    </div>
+                    <div class="image_video">
+                        <img src="../images/image.png" alt="">
+                    </div>
+                    <div class="your_reaction">
+                        <div class="comment"><i class="fa-solid fa-comment"></i><p>12</p></div>
+                        <div class="retweet"><i class="fa-solid fa-retweet"></i><p>12</p></div>
+                        <div class="like"><i class="fa-solid fa-heart"></i><p>12</p></div>
+                        <div class="bookmark"><i class="fa-solid fa-bookmark"></i><p>12</p></div>
                     </div>
                 </div>
             </div>

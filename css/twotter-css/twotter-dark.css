@@ -1,0 +1,113 @@
+*{
+    --tw-blue: #00a7ff;
+    --tw-white-hover: #e1f5ff;
+    --tw-blue-hover: #0093ff;
+    --tw-border: #e8e8e8;
+    --tw-grey: #5d5d5d;
+    --tw-grey2: #454545;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.option div a{
+    color: black;
+}
+.option div a:hover{
+    color: var(--tw-blue);
+    background-color: var(--tw-white-hover);
+}
+.option button{
+    background-color: var(--tw-blue);
+    color: white;
+}
+.option button:hover{
+    background-color: var(--tw-blue-hover);
+}
+.content_menu{
+    border-right: 1px solid var(--tw-border);
+    background-color: white;
+}
+.prefer{
+    border-bottom: 1px solid var(--tw-border);
+    border-left: 1px solid var(--tw-border);
+    background-color: white;
+}
+.prefer span a{
+    color: black;
+}
+.prefer span i{
+    color: var(--tw-blue);
+}
+.you_tweet_other_tweet{
+    border-left: 1px solid var(--tw-border);
+}
+.your_tweet{
+    border-bottom: 10px solid var(--tw-border);
+}
+.profil_message span input{
+    color: #525252;
+}
+.your_tweet span button{
+    background-color: var(--tw-blue);
+    color: white;
+}
+.your_tweet span button:hover{
+    background-color: var(--tw-blue-hover);
+}
+.other_tweet{
+    border-bottom: 1px solid var(--tw-border);
+    border-left: 1px solid var(--tw-border);
+}
+.name_msg span i{
+    color: var(--tw-blue);
+}
+.name-msg span p{
+    color: var(--tw-grey);
+}
+.name_msg span b{
+    color: black;
+}
+.msg{
+    color: black;
+}
+.comment:hover{
+    color: var(--tw-blue);
+}
+.retweet:hover{
+    color: green;
+}
+.like:hover{
+    color: red;
+}
+.bookmark:hover{
+    color: var(--tw-blue);
+}
+.search{
+    background-color: white;
+}
+.search input{
+    background-color: #ebebeb;
+}
+.search span{
+    color: var(--tw-grey2);
+}
+.trending{
+    background-color: #efefef;
+}
+.header{
+    border-bottom: 1px solid #d8d8d8;
+}
+.trend{
+    border-bottom: 1px solid #d4d4d4;
+}
+.trend-with p a{
+    color: var(--tw-blue);
+}
+.trend:hover{
+    background-color: var(--tw-border);
+}
+.show_more a{
+    color: var(--tw-blue);
+}
+.show_more:hover{
+    background-color: var(--tw-border);
+}
