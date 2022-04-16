@@ -2,37 +2,40 @@
     --tw-blue: #00a7ff;
     --tw-white-hover: #e1f5ff;
     --tw-blue-hover: #0093ff;
-    --tw-border: #e8e8e8;
-    --tw-grey: #5d5d5d;
-    --tw-grey2: #454545;
-    background-color: rgba(0, 0, 0, 0.3);
+    --tw-border: #292c2f;
+    --tw-grey: #696e73;
+    --tw-grey2: #202327;
+    background-color: black;
 }
 
 .option div a{
-    color: black;
+    color: white;
 }
 .option div a:hover{
-    color: var(--tw-blue);
-    background-color: var(--tw-white-hover);
+    color: white;
+    background-color: rgba(40, 40, 40);
+}
+.option div a:hover span, .option div a:hover i{
+    background-color: rgba(40, 40, 40);
 }
 .option button{
     background-color: var(--tw-blue);
-    color: white;
+    color: black;
 }
 .option button:hover{
     background-color: var(--tw-blue-hover);
 }
 .content_menu{
     border-right: 1px solid var(--tw-border);
-    background-color: white;
+    background-color: black;
 }
 .prefer{
     border-bottom: 1px solid var(--tw-border);
     border-left: 1px solid var(--tw-border);
-    background-color: white;
+    background-color: black;
 }
 .prefer span a{
-    color: black;
+    color: white;
 }
 .prefer span i{
     color: var(--tw-blue);
@@ -44,11 +47,11 @@
     border-bottom: 10px solid var(--tw-border);
 }
 .profil_message span input{
-    color: #525252;
+    color: white;
 }
 .your_tweet span button{
     background-color: var(--tw-blue);
-    color: white;
+    color: black;
 }
 .your_tweet span button:hover{
     background-color: var(--tw-blue-hover);
@@ -57,6 +60,9 @@
     border-bottom: 1px solid var(--tw-border);
     border-left: 1px solid var(--tw-border);
 }
+.other_tweet .your_reaction{
+    color: var(--tw-grey);
+}
 .name_msg span i{
     color: var(--tw-blue);
 }
@@ -64,10 +70,10 @@
     color: var(--tw-grey);
 }
 .name_msg span b{
-    color: black;
+    color: white;
 }
 .msg{
-    color: black;
+    color: white;
 }
 .comment:hover{
     color: var(--tw-blue);
@@ -82,32 +88,35 @@
     color: var(--tw-blue);
 }
 .search{
-    background-color: white;
+    background-color: black;
 }
 .search input{
-    background-color: #ebebeb;
+    background-color: var(--tw-grey2);
+}
+.search span i{
+    background-color: var(--tw-grey2);
 }
 .search span{
-    color: var(--tw-grey2);
+    color: white;
 }
 .trending{
-    background-color: #efefef;
+    background-color: var(--tw-grey2);
 }
 .header{
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid var(--tw-border);
 }
 .trend{
-    border-bottom: 1px solid #d4d4d4;
+    border-bottom: 1px solid var(--tw-border);
 }
 .trend-with p a{
     color: var(--tw-blue);
 }
 .trend:hover{
-    background-color: var(--tw-border);
+    background-color: var(--tw-grey2);
 }
 .show_more a{
     color: var(--tw-blue);
 }
 .show_more:hover{
-    background-color: var(--tw-border);
+    background-color: var(--tw-grey2);
 }

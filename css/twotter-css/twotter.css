@@ -130,6 +130,7 @@
 .profil_message span input{
     padding: 0 0 0 10px;
     font-size: 18px;
+    width: 100%;
     /*color: #525252;*/
     letter-spacing: 1px;
     border: none;
@@ -183,6 +184,9 @@
 }
 .name-msg{
     cursor:pointer;
+}
+.name-msg small{
+    float: right;
 }
 .name-msg span p{
     /*color: #5d5d5d;*/
@@ -290,7 +294,7 @@
     /*background-color: #efefef;*/
     border-radius: 20px;
     margin: 0 0 20px 0;
-    max-height: 333px;
+    max-height: 433px;
     max-width: 500px;
 }
 .trending:hover{
@@ -393,7 +397,7 @@
         display: none;
     }
     .container{
-        grid-template-columns: 10% 90%;
+        grid-template-columns: 100px 80%;
     }
     .profil_msg{
         grid-template-columns: 20% 60% 20%;
@@ -401,7 +405,7 @@
 }
 @media only screen and (max-width: 500px){
     .option_menu{
-        display: none;
+        display:none;
     }
     .container{
         grid-template-columns: 100%;
