@@ -7,6 +7,7 @@
     <meta name="author" content="Antoine RICHARD, Adrien VERHAEGHE">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twotter - Twoots</title>
+    <script src="https://kit.fontawesome.com/235593db07.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/twotter-css/twotter.css">
     <link rel="icon" type="image/png" href="../images/bat.png" />
 </head>
@@ -16,14 +17,14 @@
         <div class="option_menu">
             <div class="option_center">
                 <div class="logo">
-                    <!--logo twotter-->
+                    <img src="../images/bat.png" alt="logo">
                     <div class="option">
-                        <div><a href=""><i class="home"></i><span>Accueil</span></a></div>
-                        <div><a href=""><i class="trends"></i><span>Tendances</span></a></div>
-                        <div><a href=""><i class="bookmarks"></i><span>Enregistré</span></a></div>
-                        <div><a href=""><i class="user"></i><span>Profil</span></a></div>
-                        <div><a href=""><i class="settings"></i><span>Paramètres</span></a></div>
-                        <div><a href=""><i class="logout"></i><span>Déconnexion</span></a></div>
+                        <div><a href=""><i class="fa-solid fa-house"></i><span>Accueil</span></a></div>
+                        <div><a href=""><i class="fa-solid fa-arrow-trend-up"></i><span>Tendances</span></a></div>
+                        <div><a href=""><i class="fa-solid fa-bookmark"></i><span>Enregistré</span></a></div>
+                        <div><a href=""><i class="fa-solid fa-user"></i><span>Profil</span></a></div>
+                        <div><a href=""><i class="fa-solid fa-gear"></i><span>Paramètres</span></a></div>
+                        <div><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Déconnexion</span></a></div>
                         <div><button>Twoot</button></div>
                     </div>
                 </div>
@@ -44,22 +45,41 @@
                     <div class="profil_message">
                         <span><img src="../images/bat.png" alt=""></span>
                         <span><label><input type="text" placeholder="Quoi de neuf ?"></label></span>
-                    </div>
 
-                </div>
-                <div class="add_extra">
-                    <div class="image_more">
-                        <span><a href=""><i class="picture"></i></a></span>
-                        <span><a href=""><i class="bars"></i></a></span>
-                        <span><a href=""><i class="smile"></i></a></span>
-                        <span><a href=""><i class="calender"></i></a></span>
                     </div>
                     <span><button>Twoot</button></span>
                 </div>
+
             </div>
 
             <div class="others_tweets">
                 <!--each person-->
+                <div class="other_tweet">
+                    <div class="profil_msg">
+                        <div class="other_profile">
+                            <!--photo profil-->
+                            <img src="../images/bat.png" alt="photo de profil">
+                        </div>
+                        <div class="name_msg">
+                            <span><p><b>Prénom Nom</b><i class="check"></i>@pseudo <small>date</small></p></span>
+                            <div class="msg">
+                                <p>Lorem ipsum, dolor sit amet</p>
+                            </div>
+                        </div>
+                        <div class="more_options">
+                            <i class="ellipsis"></i>
+                        </div>
+                    </div>
+                    <div class="image_video">
+                        <img src="../images/image.png" alt="">
+                    </div>
+                    <div class="your_reaction">
+                        <div class="comment"><i class="fa-solid fa-comment"></i><p>12</p></div>
+                        <div class="retweet"><i class="fa-solid fa-retweet"></i><p>12</p></div>
+                        <div class="like"><i class="fa-solid fa-heart"></i><p>12</p></div>
+                        <div class="bookmark"><i class="fa-solid fa-bookmark"></i><p>12</p></div>
+                    </div>
+                </div>
                 <div class="other_tweet">
                     <div class="profil_msg">
                         <div class="other_profile">
@@ -119,7 +139,7 @@
             <div class="trending_center">
                 <div class="search">
                     <label><input type="search" placeholder="Chercher sur Twotter"></label>
-                    <span><i class="search_logo"></i></span>
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
                 <div class="trending">
                     <div class="header">
