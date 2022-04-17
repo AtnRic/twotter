@@ -291,6 +291,7 @@
 }
 .trending{
     width: 80%;
+    /*background-color: #efefef;*/
     border-radius: 20px;
     margin: 0 0 20px 0;
     max-height: 433px;
@@ -302,14 +303,12 @@
 .header{
     width: 100%;
     height: 55px;
-    border-radius: 20px;
     /*border-bottom: 1px solid #d8d8d8;*/
 }
 .header p{
     padding: 15px 20px;
     font-size: 18px;
     font-weight: 900;
-    border-radius: 20px;
 }
 .trends{
     width: 100%;
@@ -317,7 +316,6 @@
 .trend{
     display: grid;
     grid-template-columns: 70% 30%;
-
     /*border-bottom: 1px solid #d4d4d4;*/
 }
 .trend_msg{
@@ -356,7 +354,6 @@
 }
 .show_more{
     padding: 20px 20px;
-    border-radius: 20px;
 }
 .show_more a{
     text-decoration: none;

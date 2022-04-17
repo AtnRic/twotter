@@ -20,7 +20,7 @@
 }
 .option button{
     background-color: var(--tw-blue);
-    color: white;
+    color: black;
 }
 .option button:hover{
     background-color: var(--tw-blue-hover);
@@ -51,7 +51,7 @@
 }
 .your_tweet span button{
     background-color: var(--tw-blue);
-    color: white;
+    color: black;
 }
 .your_tweet span button:hover{
     background-color: var(--tw-blue-hover);
@@ -67,9 +67,9 @@
     color: var(--tw-blue);
 }
 .name-msg span p{
-    color: white;
+    color: var(--tw-grey);
 }
-.name_msg span {
+.name_msg span b{
     color: white;
 }
 .msg{
@@ -93,55 +93,30 @@
 .search input{
     background-color: var(--tw-grey2);
 }
-.search input{
-    color: white;
-}
-.search span, .search span i{
+.search span i{
     background-color: var(--tw-grey2);
 }
-.search span i{
-    color: #97989a;
-}
-.search span input{
+.search span{
     color: white;
 }
 .trending{
-    background-color: #16181c;
-    /*border-radius: 20px;*/
-}
-.header{
-    background-color: #16181c;
-    color: white;
-}
-.header p{
-    background-color: #16181c;
-    color: white;
-}
-.trend{
-    border-top: 1px solid var(--tw-border);
-    border-bottom: 1px solid var(--tw-border);
-    background-color: #16181c;
-}
-.trend_msg, .trend_msg p,.trend_msg a,.trend_msg .trend_name,.trend_with, .show_more, .show_more a{
-    color: white;
-    background-color: #16181c;
-}
-
-.trend:hover, .trend:hover div,.trend:hover .trend_msg .trend_name,.trend:hover .trend_with{
     background-color: var(--tw-grey2);
 }
-
+.header{
+    border-bottom: 1px solid var(--tw-border);
+}
+.trend{
+    border-bottom: 1px solid var(--tw-border);
+}
 .trend-with p a{
     color: var(--tw-blue);
-    background-color: #16181c;
 }
-/*
 .trend:hover{
     background-color: var(--tw-grey2);
 }
-.show_more:hover{
-    background-color: var(--tw-grey2);
-}*/
 .show_more a{
     color: var(--tw-blue);
+}
+.show_more:hover{
+    background-color: var(--tw-grey2);
 }
