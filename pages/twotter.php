@@ -51,15 +51,12 @@
                 <span>
                     <a href="">Accueil</a>
                 </span>
-                <span>
-                    <i class="fa-solid fa-badge-check"></i>
-                </span>
             </div>
             <div class="you_tweet_other_tweet">
                 <div class="your_tweet">
                     <div class="profil_message">
                         <span><img src="../images/bat.png" alt=""></span>
-                        <span><label><input type="text" placeholder="Quoi de neuf ?"></label></span>
+                        <span class="twoot"><label><input type="text" placeholder="Quoi de neuf ?"></label></span>
                     </div>
                     <span><button>Twoot</button></span>
                 </div>

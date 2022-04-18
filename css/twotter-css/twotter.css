@@ -110,7 +110,10 @@
 .profil_message img:hover{
     opacity: 1;
 }
-.profil_message span input{
+.your_tweet .profil_message .twoot{
+    width: 88%;
+}
+.your_tweet .profil_message span input{
     padding: 0 0 0 10px;
     font-size: 18px;
     width: 100%;
