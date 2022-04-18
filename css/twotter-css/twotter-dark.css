@@ -113,7 +113,7 @@
     background-color: #16181c;
     color: white;
 }
-.tend{
+.trend{
     border-top: 1px solid var(--tw-border);
     border-bottom: 1px solid var(--tw-border);
 }
@@ -124,7 +124,7 @@
 .trend:hover{
     background-color: var(--tw-grey2);
 }
-.trend_msg, .trend_msg p,.trend_msg a,.trend_msg .trend_name,.trend_with, .show_more, .show_more a{
+.trend_msg, .trend_msg p,.trend_msg a,.trend_msg .trend_name,.trend_with, .show_more{
     color: white;
     background-color: #16181c;
 }
@@ -133,10 +133,10 @@
 }
 .trend-with p a{
     color: var(--tw-blue);
-    /*background-color: #16181c;*/
 }
 .show_more a{
     color: var(--tw-blue);
+    background-color: #16181c;
 }
 .show_more:hover, .show_more:hover a{
     background-color: var(--tw-grey2);

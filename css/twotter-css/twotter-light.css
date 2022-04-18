@@ -93,11 +93,9 @@
 .trending{
     background-color: #efefef;
 }
-.header{
-    border-bottom: 1px solid #d8d8d8;
-}
 .trend{
     border-bottom: 1px solid #d4d4d4;
+    border-top: 1px solid #d8d8d8;
 }
 .trend-with p a{
     color: var(--tw-blue);

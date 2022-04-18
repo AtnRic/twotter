@@ -9,7 +9,7 @@
     <title>Twotter - Twoots</title>
     <script src="https://kit.fontawesome.com/235593db07.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/twotter-css/twotter.css">
-    <link rel="stylesheet" href="../css/twotter-css/twotter-dark.css">
+    <link rel="stylesheet" href="../css/twotter-css/twotter-light.css">
     <link rel="icon" type="image/png" href="../images/bat.png" />
 </head>
 <body>
