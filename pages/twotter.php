@@ -9,8 +9,22 @@
     <title>Twotter - Twoots</title>
     <script src="https://kit.fontawesome.com/235593db07.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/twotter-css/twotter.css">
-    <link rel="stylesheet" href="../css/twotter-css/twotter-light.css">
     <link rel="icon" type="image/png" href="../images/bat.png" />
+    <!--thème-->
+    <?php
+    if(isset($_COOKIE['theme'])) { //si le cookie theme existe
+        $style=$_COOKIE['theme'];
+        if($style=="dark"){
+            echo "<link rel='stylesheet' href='../css/twotter-css/twotter-dark.css'>";
+        }
+        else{
+            echo "<link rel='stylesheet' href='../css/twotter-css/twotter-light.css'>";
+        }
+    }
+    else{//si le cookie n'existe pas, le thème par défaut est le thème clair
+        echo "<link rel='stylesheet' href='../css/twotter-css/twotter-light.css'>";
+    }
+    ?>
 </head>
 <body>
     <div class="container">
