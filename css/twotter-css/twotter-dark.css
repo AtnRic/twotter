@@ -113,9 +113,11 @@
     background-color: #16181c;
     color: white;
 }
-.trend, .trend > div, .trend div p{
+.tend{
     border-top: 1px solid var(--tw-border);
     border-bottom: 1px solid var(--tw-border);
+}
+.trend, .trend > div, .trend div p{
     background-color: #16181c;
     color: white;
 }
@@ -126,8 +128,8 @@
     color: white;
     background-color: #16181c;
 }
-.trend:hover, .trend:hover div,.trend:hover .trend_msg .trend_name,.trend:hover .trend_with{
-    /*background-color: var(--tw-grey2);*/
+.trend:hover, .trend:hover div,.trend:hover .trend_msg .trend_name,.trend:hover .trend_with, .trend:hover p, .trend:hover a{
+    background-color: var(--tw-grey2);
 }
 .trend-with p a{
     color: var(--tw-blue);
@@ -135,4 +137,7 @@
 }
 .show_more a{
     color: var(--tw-blue);
+}
+.show_more:hover, .show_more:hover a{
+    background-color: var(--tw-grey2);
 }
