@@ -1,50 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8" />
-    <meta name="description" content="Twotter">
-    <meta name="keywords" content="twotter">
-    <meta name="author" content="Antoine RICHARD, Adrien VERHAEGHE">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twotter - Twoots</title>
-    <script src="https://kit.fontawesome.com/235593db07.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/twotter-css/twotter.css">
-    <link rel="icon" type="image/png" href="../images/bat.png" />
-    <!--thème-->
-    <?php
-    if(isset($_COOKIE['theme'])) { //si le cookie theme existe
-        $style=$_COOKIE['theme'];
-        if($style=="dark"){
-            echo "<link rel='stylesheet' href='../css/twotter-css/twotter-dark.css'>";
-        }
-        else{
-            echo "<link rel='stylesheet' href='../css/twotter-css/twotter-light.css'>";
-        }
-    }
-    else{//si le cookie n'existe pas, le thème par défaut est le thème clair
-        echo "<link rel='stylesheet' href='../css/twotter-css/twotter-light.css'>";
-    }
-    ?>
-</head>
+<html lang='fr'>
+<!--le header se trouve dans le fichier header.php-->
+<?php
+$pageName="Twoots"; //le nom de la page
+$cssPath = "twotter-css/twotter.css";
+$cssPath_light = "twotter-css/twotter-light.css";
+$cssPath_dark = "twotter-css/twotter-dark.css";
+
+include '../tools/header.php'
+?>
+
 <body>
     <div class="container">
         <!--sidebar-->
-        <div class="option_menu">
-            <div class="option_center">
-                <div class="logo">
-                    <img src="../images/bat.png" alt="logo">
-                    <div class="option">
-                        <div><a href=""><i class="fa-solid fa-house"></i><span>Accueil</span></a></div>
-                        <div><a href=""><i class="fa-solid fa-arrow-trend-up"></i><span>Tendances</span></a></div>
-                        <div><a href=""><i class="fa-solid fa-bookmark"></i><span>Enregistré</span></a></div>
-                        <div><a href=""><i class="fa-solid fa-user"></i><span>Profil</span></a></div>
-                        <div><a href=""><i class="fa-solid fa-gear"></i><span>Paramètres</span></a></div>
-                        <div><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Déconnexion</span></a></div>
-                        <div><button>Twoot</button></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+        include '../tools/sidebar.php'
+        ?>
         <!--content menu-->
         <div class="content_menu">
             <div class="prefer">
