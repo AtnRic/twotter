@@ -8,7 +8,8 @@ $cssPath = "twotter-css/twotter.css";
 $cssPath2 = "settings.css";
 $cssPath_light = "twotter-css/twotter-light.css";
 $cssPath_dark = "twotter-css/twotter-dark.css";
-include '../tools/header.php'
+
+require '../tools/header.php'
 ?>
 
 <body>
@@ -26,17 +27,34 @@ include '../tools/header.php'
         <div class="theme">
             <p>Personnalisez votre affichage</p><br>
             <div class="choix_theme">
-                <input type="checkbox" class="checkbox" id="chk" />
-                <label class="label" for="chk">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                    <div class="ball"></div>
-                </label>
-                <input type="submit" class='sub' name='sub' value="Envoyer">
+                <form method="post" action="settings.php">
+                    <input type="checkbox" class="checkbox"  name="theme" value="dark" id="chk"/>
+                    <label class="label" for="chk">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="ball"></div>
+                    </label>
+                    <br>
+                    <input type="submit" class='sub' name='sub' value="Enregistrer">
+                </form>
             </div>
         </div>
     </div>
-
 </div>
 </body>
+<!--traitement du choix du thème-->
+<?php
+@$theme = $_POST["theme"];
+if (isset($_POST["theme"]))
+    if($theme="dark"){
+        $themeChoisi="dark";
+    }
+    else{
+        $themeChoisi="light";
+    }
+else {
+    $themeChoisi="light";
+}
+setcookie('theme', $themeChoisi, time() + (3600*24*365));
+?>
 </html>

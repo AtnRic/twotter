@@ -141,3 +141,28 @@
 .show_more:hover, .show_more:hover a{
     background-color: var(--tw-grey2);
 }
+/*setting theme*/
+.choix_theme{
+    background-color: black;
+}
+label {
+    background-color: white;
+}
+.label .ball {
+    background-color: black;
+}
+.sub{
+    background-color: #00a7ff;
+}
+body.dark {
+    background: #292C35;
+}
+.fa-moon {
+    color: #f1c40f;
+    background-color: white;
+}
+
+.fa-sun {
+    color: #f39c12;
+    background-color: white;
+}

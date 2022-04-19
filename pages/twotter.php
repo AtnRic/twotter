@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang='fr'>
 <!--le header se trouve dans le fichier header.php-->
+
 <?php
 $pageName="Twoots"; //le nom de la page
 $cssPath = "twotter-css/twotter.css";
 $cssPath_light = "twotter-css/twotter-light.css";
 $cssPath_dark = "twotter-css/twotter-dark.css";
 
-include '../tools/header.php'
+require '../tools/header.php'
 ?>
+
+
 
 <body>
     <div class="container">

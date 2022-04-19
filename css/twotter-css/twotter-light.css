@@ -109,3 +109,13 @@
 .show_more:hover{
     background-color: var(--tw-border);
 }
+/*setting theme*/
+.label {
+    background-color: #1F1F1F;
+}
+.label .ball {
+    background-color: white;
+}
+.sub{
+    background-color: #00a7ff;
+}
