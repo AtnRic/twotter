@@ -55,7 +55,7 @@
     font-size: 16px;
     cursor: pointer;
 }
-.option button:hover{
+.option button{
     transition-duration: 0.1s;
 }
 .content_menu{
@@ -113,7 +113,10 @@
 .your_tweet .profil_message .twoot{
     width: 88%;
 }
-.your_tweet .profil_message span input{
+.your_tweet .profil_message form{
+    width: 100%;
+}
+.your_tweet .profil_message input.twoot{
     padding: 0 0 0 10px;
     font-size: 18px;
     width: 100%;
@@ -121,7 +124,7 @@
     border: none;
     outline: none;
 }
-.your_tweet span button{
+.you_tweet_other_tweet .your_tweet .profil_message form input.sub_twoot{
     float: right;
     margin-right: 20px;
     padding: 10px 25px;

@@ -27,7 +27,7 @@ require '../tools/header.php'
         <div class="theme">
             <p>Personnalisez votre affichage</p><br>
             <div class="choix_theme">
-                <form method="post" action="settings.php">
+                <form method="get" action="settings.php">
                     <input type="checkbox" class="checkbox"  name="theme" value="dark" id="chk"/>
                     <label class="label" for="chk">
                         <i class="fas fa-moon"></i>
@@ -44,17 +44,23 @@ require '../tools/header.php'
 </body>
 <!--traitement du choix du thème-->
 <?php
-@$theme = $_POST["theme"];
-if (isset($_POST["theme"]))
+@$theme = $_GET["theme"];
+if(isset($_GET["theme"])){
     if($theme="dark"){
         $themeChoisi="dark";
     }
     else{
         $themeChoisi="light";
     }
-else {
+
+}
+else{
     $themeChoisi="light";
 }
 setcookie('theme', $themeChoisi, time() + (3600*24*365));
+/*
+if (isset($_GET["theme"])){
+    header('Location: settings.php?theme=dark&sub=Enregistrer');
+}*/
 ?>
 </html>

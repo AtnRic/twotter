@@ -75,7 +75,6 @@ img{
     position: relative;
     width: 35vw;
     height: 70vh;
-    transition: all 5s ease-in-out;
 }
 
 .popup h1{
