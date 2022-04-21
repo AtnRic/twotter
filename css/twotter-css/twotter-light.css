@@ -43,14 +43,14 @@
 .your_tweet{
     border-bottom: 10px solid var(--tw-border);
 }
-.profil_message span input{
+.profil_message input.twoot{
     color: #525252;
 }
-.your_tweet span button{
+.your_tweet .profil_message form input.sub_twoot{
     background-color: var(--tw-blue);
     color: white;
 }
-.your_tweet span button:hover{
+.your_tweet .profil_message form input.sub_twoot:hover{
     background-color: var(--tw-blue-hover);
 }
 .other_tweet{

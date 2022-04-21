@@ -11,8 +11,6 @@ $cssPath_dark = "twotter-css/twotter-dark.css";
 require '../tools/header.php'
 ?>
 
-
-
 <body>
     <div class="container">
         <!--sidebar-->
@@ -29,10 +27,13 @@ require '../tools/header.php'
             <div class="you_tweet_other_tweet">
                 <div class="your_tweet">
                     <div class="profil_message">
-                        <span><img src="../images/bat.png" alt=""></span>
-                        <span class="twoot"><label><input type="text" placeholder="Quoi de neuf ?"></label></span>
+                        <form action="../tools/upload.php" method='POST' enctype="multipart/form-data">
+                            <span><img src="../images/bat.png" alt=""></span>
+                            <label for="twoot"></label><input class="twoot" type="text" id="twoot" name="twoot" placeholder="Quoi de neuf ?" required ><br>
+                            <input type="file" name="file" id="file"/>
+                            <input type="submit" class="sub_twoot" name='sub' value="Twoot">
+                        </form>
                     </div>
-                    <span><button>Twoot</button></span>
                 </div>
 
             </div>
@@ -160,7 +161,7 @@ require '../tools/header.php'
         <div class="trending_menu">
             <div class="trending_center">
                 <div class="search">
-                    <label><input type="search" placeholder="Chercher sur Twotter"></label>
+                    <label class="input_search"><input type="search" placeholder="Chercher sur Twotter"></label>
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
                 <div class="trending">
