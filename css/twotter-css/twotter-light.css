@@ -53,6 +53,13 @@
 .your_tweet .profil_message form input.sub_twoot:hover{
     background-color: var(--tw-blue-hover);
 }
+.label-file{
+    color: var(--tw-blue);
+    background-color: inherit;
+}
+.label-file:hover {
+    color: #25a5c4;
+}
 .other_tweet{
     border-bottom: 1px solid var(--tw-border);
     border-left: 1px solid var(--tw-border);

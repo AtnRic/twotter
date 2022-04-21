@@ -3,13 +3,14 @@
 $File = '../images/media/' .basename($_FILES["file"]["name"]);
 $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));
 $valide = array('jpg', 'png', 'gif', 'jpeg');
-//echo $File;
 if (in_array($extension, $valide)){ //vérifie l'extension du fichier
     if(@filesize($File)<=1000000){//vérifie la taille du fichier
         move_uploaded_file($_FILES["file"]["tmp_name"], $File);//on déplace l'image dans le dossier
     }
+    //return dans popup ?
     //else echo "fichier trop lourd";
 }
+header('Location: ../pages/twotter.php');
 //else echo "extension non valide";
 ?>
 
