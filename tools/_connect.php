@@ -46,33 +46,37 @@ function passwd($mdp)
     }
 
 
-
 function signup($pseudo, $mdp, $cmdp)
 {
     $hostname="localhost";//à changer
     $username="root";//nom d'utilisateur pour acc�der au serveur (root)
     $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="db_twotter"; //nom de la base de donn�es
+    $dbname="twotter"; //nom de la base de donn�es
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
 
-
-    if($mdp != $cmdp)
-    {
-        return "Les mots de passe sont différents";
-    }
-    if(!passwd($mdp))
-    {
-        return "Le mot de passe ne respecte pas les normes.";
-    }
-    // Voir comment créer une table.
-    $requete = "INSERT INTO `twotter` (`pseudo`, `mdp`) VALUES ('$pseudo', '$mdp')"; //La requere SQL
-    $resultat = mysqli_query($connexion, $requete); //Executer la requete;
-    if ( $resultat == FALSE ){
+    $requete = "SELECT * FROM `users`";
+    $resultat = mysqli_query($connexion, $requete);
+    if ( $resultat == NULL){
         return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
         die();
     }
+
+    $find = false;
+
+    while ($ligne = $resultat -> fetch_assoc()) {
+        $nickname = $ligne['nickname']; 
+        if($nickname == $pseudo){
+             return "Un compte utilise déjà ce pseudonyme.";
+        }
+    }
+    // Voir comment créer une table.
+    $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp')"; //La requere SQL
+    $resultat2 = mysqli_query($connexion, $requete2); //Executer la requete
+    if ( $resultat2 == FALSE ){
+        return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+    }
     else{
-        return (boolean)true;
+        return "Compte reçu.";
     }
 }
 				
@@ -82,23 +86,39 @@ function signin($pseudo, $mdp)
     $hostname="localhost";//à changer
     $username="root";//nom d'utilisateur pour acc�der au serveur (root)
     $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="db_twotter"; //nom de la base de donn�es
+    $dbname="twotter"; //nom de la base de donn�es
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
 
-    
-    $requete = "SELECT * FROM $pseudo";
+    $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
-
     if ( $resultat == NULL){
         return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
         die();
     }
 
+    $find = false;
 
-    
-    else{
-        return (boolean)true;
+    while ($ligne = $resultat -> fetch_assoc()) {
+        $nickname = $ligne['nickname']; 
+        $password = $ligne['password']; 
+        $id = $ligne['id'];
+        if($nickname == $pseudo){
+            if($password == $mdp){
+                $find = true;
+                return (boolean)true;
+            }
+            else{
+                return "Mauvais mot de passe pour le compte.";
+            }
+        }
     }
+    return "Aucun compte n'a été trouvé.";
 }
 
+function Console($data) {
+    $start = array("'", "<p>", "</p>");
+    $end   = array(" ", "", "");
+    $new = str_replace($start, $end, $data);
+    return "<script> console.log('$new'); </script>";
+}
 ?>

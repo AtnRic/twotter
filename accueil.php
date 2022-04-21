@@ -3,8 +3,8 @@
     if(isset($_COOKIE['login'])&& isset($_COOKIE['mdp_hash'])) { //si le cookie existe
         //on vérifie dans la base de donnée et on connecte au bon compte
         $newURL = "pages/twotter.php";
-        header('Location: '.$newURL);
-        die();
+        //header('Location: '.$newURL);
+        //die();
 }
 ?>
 
@@ -73,8 +73,20 @@
     <?php
     include 'tools/_connect.php';
     $count = 0;
+
+
+
     //on met la bordure de la case mot de passe (inscription) en rouge si le mot de passe ne respect pas le pattern
-        if(isset($_POST['mdpin'])){
+        if(isset($_POST['mdpin'])){ 
+            $sign = signup($_POST['pseudo'], $_POST['mdpin'], $_POST['verifmdp']);
+            $error = Console($sign);
+            echo $error;
+
+            if($sign == true){
+                
+            }   
+       
+
             if(!passwd($_POST['mdpin'])){
                 echo "<style>
                 .popup #mdpin{
@@ -157,9 +169,10 @@
                 $count++;
             }
         }
-
+        
         //si les 3 conditions sont vérifiées :
-        if($count==3){
+        if($count==4)
+        {
             $login= $_POST['pseudo'];
             $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
             $_SESSION["pseudo"]=$login; //Variable de session "pseudo"
@@ -169,8 +182,59 @@
             }
             //ajouter utilisateur dans la base de données
             $newURL = "pages/twotter.php";
-            header('Location: '.$newURL);
+            //header('Location: '.$newURL);
             die();
         }
+
+
+        $count = 0;
+            if(isset($_POST['mdpco'])){
+                //on profite du isset pour le mot de passe pour verifier que les autres champs soient biens remplis
+                if(empty($_POST['login'])){
+                    echo "<style>
+                        .popup #login{
+                            outline: none;
+                            border-style: solid;
+                            border-radius: 5px;
+                            border-width: 2px;
+                            border-color:red;
+                        }
+                        </style>"; 
+                }
+                else{
+                    $count++;
+                }
+            }
+            else{
+                echo "<style>
+                .popup input[type=text]:focus, input[type=password]:focus{
+                    outline: none;
+                    border-style: solid;
+                    border-radius: 5px;
+                    border-width: 2px;
+                    border-color:#119afb;
+                }
+                </style>";
+            }
+            
+            //si les 1 conditions sont vérifiées :
+            if($count==1)
+            {
+                $sign = signin($_POST['login'], $_POST['mdpco']);
+                $error = Console($sign);
+                echo $error;
+                $login= $_POST['pseudo'];
+                $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
+                $_SESSION["pseudo"]=$login; //Variable de session "pseudo"
+                if (!isset($_COOKIE['pseudo']) && !isset($_COOKIE['mdp_hash'])){
+                    setcookie("login", $login, time() + (3600 * 24 * 365));
+                    setcookie("mdp_hash", $mdp_hash, time() + (3600 * 24 * 365));
+                }
+                //ajouter utilisateur dans la base de données
+                $newURL = "pages/twotter.php";
+                //header('Location: '.$newURL);
+                die();
+            }
     ?>
+
 </html>
