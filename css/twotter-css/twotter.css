@@ -101,6 +101,7 @@
     padding: 10px 15px;
 }
 .profil_message img{
+    grid-column: 1;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -116,15 +117,22 @@
 .your_tweet .profil_message form{
     width: 100%;
 }
+.center_div{
+    display: grid;
+    grid-template-columns: 50px 87%;
+    grid-template-rows: 100%;
+}
 .your_tweet .profil_message input.twoot{
+    grid-column: 2;
+    grid-row: 1;
     padding: 0 0 0 10px;
     font-size: 18px;
-    width: 100%;
+    width: 80%;
     letter-spacing: 1px;
     border: none;
     outline: none;
 }
-.you_tweet_other_tweet .your_tweet .profil_message form input.sub_twoot{
+.your_tweet .profil_message form input.sub_twoot{
     float: right;
     margin-right: 20px;
     padding: 10px 25px;
@@ -132,6 +140,17 @@
     border: none;
     font-size: 16px;
     font-weight: 700;
+}
+.label-file {
+    cursor: pointer;
+}
+.label-file i{
+    margin-left: 60px;
+    padding-top: 15px;
+    font-size: 25px;
+}
+.input-file {
+    display: none;
 }
 .others_tweets{
     width: 100%;
@@ -319,8 +338,27 @@
 .show_more:hover{
     border-radius: 0 0 20px 20px;
 }
-
-
+/*profil*/
+.profile_box{
+    overflow-y: hidden;
+    width: 100%;
+    border-left: 1px solid var(--tw-border);
+    border-bottom: 1px solid var(--tw-border);
+}
+.other_profile#profile_img{
+    margin-top: -55px;
+    margin-left: 15px;
+    z-index: 1000;
+}
+.other_profile#profile_img img{
+    width: 90px;
+    height: 90px;
+    opacity: 1;
+}
+#profil_name{
+    margin-left: 15px;
+    padding-bottom: 10px;
+}
 @media only screen and (max-width: 1450px){
     .option span{
         display: none;
