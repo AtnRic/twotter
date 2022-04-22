@@ -11,14 +11,13 @@
 .choix_theme{
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 15vh;
     margin-top: 10px;
 }
 .checkbox {
     opacity: 0;
     position: absolute;
 }
-
 .label {
     border-radius: 50px;
     cursor: pointer;
@@ -31,7 +30,6 @@
     width: 50px;
     transform: scale(1.5);
 }
-
 .label .ball {
     border-radius: 50%;
     position: absolute;
@@ -42,22 +40,17 @@
     transform: translateX(0px);
     transition: transform 0.2s linear;
 }
-
 .checkbox:checked + .label .ball {
     transform: translateX(24px);
 }
-
-
 .fa-moon {
     color: #f1c40f;
 }
-
 .fa-sun {
     color: #f39c12;
 }
-
 .sub{
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: -20px;
     float: right;
     width: 100px;
@@ -65,4 +58,19 @@
     color: white;
     border-width: 0;
     border-radius: 50px;
+}
+.change form{
+    align-items: center;
+    margin: auto;
+}
+.change form input{
+    margin: auto;
+}
+.change form #nom, #prenom{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    padding : 10px;
+    border-color: var(--tw-blue);
 }

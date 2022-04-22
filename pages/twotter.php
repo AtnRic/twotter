@@ -34,7 +34,6 @@ require '../tools/_connect.php';
                                 <span><img src="../images/bat.png" alt="photo de profil"></span>
                                 <label for="twoot"></label><input class="twoot" type="text" id="twoot" name="twoot" placeholder="Quoi de neuf ?" required >
                             </div>
-                            <!--<input class="input_file" type="file" name="file" id="file"/>-->
                             <span class="label-file"><label for="file"><i class="fa-solid fa-image"></i></label></span>
                             <input id="file" class="input-file" type="file" name="file">
                             <input type="submit" class="sub_twoot" name='sub' value="Twoot">
