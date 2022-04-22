@@ -126,3 +126,9 @@
 .sub{
     background-color: #00a7ff;
 }
+.change form span{
+    color: black;
+}
+.change form span:hover{
+    color: black;
+}

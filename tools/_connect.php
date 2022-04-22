@@ -130,7 +130,7 @@ function getTwoots()
         return (boolean)false;
     }
 
-    while ($ligne = $resultat -> fetch_assoc()) 
+    while ($ligne = $resultat -> fetch_assoc())
     {            
         $postId = $ligne['postId']; 
         $userId = $ligne['userId'] . ' '; 
@@ -145,7 +145,7 @@ function getTwoots()
         if ( $resultat2 == NULL){
             return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
         }
-        while ($ligne2 = $resultat2 -> fetch_assoc()) 
+        while ($ligne2 = $resultat2 -> fetch_assoc())
         {
             //echo Console(print_r($ligne2));
             if($ligne2['id'] == $userId)
@@ -177,7 +177,6 @@ function getTwoots()
             }
         }
     }
-
     return $post;
 }
 

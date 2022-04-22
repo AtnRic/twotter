@@ -176,3 +176,10 @@ body.dark {
     color: #f39c12;
     background-color: white;
 }
+/*paramètres*/
+.change form span{
+    color: white;
+}
+.change form input{
+    color: white;
+}
