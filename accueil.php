@@ -56,9 +56,9 @@
             <a class="close" href=""><img class ='_close' src="images/x-button.png" alt="X"></a>
             <img class ='logo' src="images/bat.png" alt="logo">
             <h1>Connectez-vous</h1>
-            <form action="accueil.php" method='POST'>
+            <form action="" method='POST'>
                 <label for="login"></label><input type="text" id="login" name="login" placeholder="Pseudo" autofocus required><br>
-                <label for="mpdco"></label><input type="password" id="mpdco" name="mpdco" placeholder="Mot de passe" required><br>
+                <label for="mpdco"></label><input type="password" id="mdpco" name="mdpco" placeholder="Mot de passe" required><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
             <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>  
@@ -72,20 +72,10 @@
      
     <?php
     include 'tools/_connect.php';
-    $count = 0;
-
-
-
-    //on met la bordure de la case mot de passe (inscription) en rouge si le mot de passe ne respect pas le pattern
-        if(isset($_POST['mdpin'])){ 
-            $sign = signup($_POST['pseudo'], $_POST['mdpin'], $_POST['verifmdp']);
-            $error = Console($sign);
-            echo $error;
-
-            if($sign == true){
-                
-            }   
-       
+    // Register.
+        $count = 0;
+        if(isset($_POST['mdpin']))
+        {
 
             if(!passwd($_POST['mdpin'])){
                 echo "<style>
@@ -116,7 +106,8 @@
             else{
                 $count++;
             }
-            if(empty($_POST['mdpin'])){
+
+        if(empty($_POST['mdpin'])){
                 echo "<style>
                     .popup #mdpin{
                         outline: none;
@@ -138,7 +129,6 @@
                     }
                     </style>"; 
             }
-
         }
         else{
             echo "<style>
@@ -152,7 +142,7 @@
             </style>";
         }
 
-    //on vérifie les mdp (inscription)
+        //on vérifie les mdp (inscription)
         if(isset($_POST['mdpin']) && isset($_POST['verifmdp'])){
             if(!verifpasswd($_POST['mdpin'], $_POST['verifmdp'])){
                 echo "<style>
@@ -170,6 +160,27 @@
             }
         }
         
+        if($count == 3)
+        {
+            $sign = signup($_POST['pseudo'], $_POST['mdpin'], $_POST['verifmdp']);
+
+            if($sign == true){                
+            echo Console("Connected to twooter.");
+            $count++;
+            }  
+            else{
+            echo "<style>
+            .popup #mdpin{
+                outline: none;
+                border-style: solid;
+                border-radius: 5px;
+                border-width: 2px;
+                border-color:red;
+            }
+            </style>"; 
+            }
+        }
+
         //si les 3 conditions sont vérifiées :
         if($count==4)
         {
@@ -182,13 +193,14 @@
             }
             //ajouter utilisateur dans la base de données
             $newURL = "pages/twotter.php";
-            //header('Location: '.$newURL);
+            header('Location: '.$newURL);
             die();
         }
 
-
+    // Login.
         $count = 0;
-            if(isset($_POST['mdpco'])){
+        if(isset($_POST['mdpco'])){
+
                 //on profite du isset pour le mot de passe pour verifier que les autres champs soient biens remplis
                 if(empty($_POST['login'])){
                     echo "<style>
@@ -204,8 +216,28 @@
                 else{
                     $count++;
                 }
-            }
-            else{
+
+                if($count == 1)
+                {                        
+                    $sign = signin($_POST['login'], $_POST['mdpco']);
+                    if($sign == true){
+                        $count++;
+                        echo Console("Connected to twooter.");
+                    }   
+                    else{
+                    echo "<style>
+                    .popup #login{
+                        outline: none;
+                        border-style: solid;
+                        border-radius: 5px;
+                        border-width: 2px;
+                        border-color:red;
+                    }
+                    </style>"; 
+                    }
+                }
+        }
+        else{
                 echo "<style>
                 .popup input[type=text]:focus, input[type=password]:focus{
                     outline: none;
@@ -215,16 +247,13 @@
                     border-color:#119afb;
                 }
                 </style>";
-            }
+        }
             
-            //si les 1 conditions sont vérifiées :
-            if($count==1)
-            {
-                $sign = signin($_POST['login'], $_POST['mdpco']);
-                $error = Console($sign);
-                echo $error;
-                $login= $_POST['pseudo'];
-                $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
+        //si les 2 conditions sont vérifiées :
+        if($count==2)
+        {
+                $login= $_POST['login'];
+                $mdp_hash = hash('sha256', $_POST['mdpco']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
                 $_SESSION["pseudo"]=$login; //Variable de session "pseudo"
                 if (!isset($_COOKIE['pseudo']) && !isset($_COOKIE['mdp_hash'])){
                     setcookie("login", $login, time() + (3600 * 24 * 365));
@@ -232,9 +261,13 @@
                 }
                 //ajouter utilisateur dans la base de données
                 $newURL = "pages/twotter.php";
-                //header('Location: '.$newURL);
+                header('Location: '.$newURL);
                 die();
-            }
+        }
+    
+    
+    
+    
     ?>
 
 </html>
