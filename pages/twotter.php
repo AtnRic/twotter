@@ -8,7 +8,9 @@ $cssPath = "twotter-css/twotter.css";
 $cssPath_light = "twotter-css/twotter-light.css";
 $cssPath_dark = "twotter-css/twotter-dark.css";
 
-require '../tools/header.php'
+require '../tools/header.php';
+require '../tools/_connect.php';
+
 ?>
 
 <body>
@@ -44,6 +46,9 @@ require '../tools/header.php'
 
             <div class="others_tweets">
                 <!--each person-->
+                <?php
+                    echo getTwoots();
+                ?>
                 <div class="other_tweet">
                     <div class="profil_msg">
                         <div class="other_profile">

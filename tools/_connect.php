@@ -115,16 +115,15 @@ function signin($pseudo, $mdp)
     return (boolean)false;
 }
 
-function twoots()
+function getTwoots()
 {
-    hostname="localhost";//à changer
+    $hostname="localhost";//à changer
     $username="root";//nom d'utilisateur pour acc�der au serveur (root)
     $password="root"; //mot de passe pour acc�der au serveur (root)
     $dbname="twotter"; //nom de la base de donn�es
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
     $requete = "SELECT * FROM `twoots`";
     $resultat = mysqli_query($connexion, $requete);
-    $post
 
     if ( $resultat == NULL){
         //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
@@ -132,29 +131,34 @@ function twoots()
     }
 
     while ($ligne = $resultat -> fetch_assoc()) 
-    {
+    {            
         $postId = $ligne['postId']; 
-        $userId = $ligne['userId']; 
+        $userId = $ligne['userId'] . ' '; 
         $content = $ligne['content'];         
         $date = $ligne['date']; 
         $likeCount = $ligne['likeCount'];         
         $mediaPath = $ligne['mediaPath']; 
+        $post = "";
 
         $requete2 = "SELECT * FROM `users`";
-        $resultat2 = mysqli_query($connexion, $requete);
-        while ($ligne = $resultat2 -> fetch_assoc()) 
+        $resultat2 = mysqli_query($connexion, $requete2);
+        if ( $resultat2 == NULL){
+            return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+        }
+        while ($ligne2 = $resultat2 -> fetch_assoc()) 
         {
-            if($ligne['userId'] == $userId)
+            //echo Console(print_r($ligne2));
+            if($ligne2['id'] == $userId)
             {
-                $name = $ligne['nickname'];
-                $post += "<div class='other_tweet'>
+                $name = $ligne2['nickname'];
+                $post = $post . "<div class='other_tweet'>
                 <div class='profil_msg'>
                     <div class='other_profile'>
                 <!--photo profil-->
                         <img src='../images/pp/karadoc.PNG' alt='photo de profil'>
                     </div>
                 <div class='name_msg'>
-                    <span><p><b>$name</b><i class='fa-solid fa-badge-check'></i>@$name <small>$date</small></p></span>
+                    <span><p><b>$name</b><i class='fa-solid fa-badge-check'></i>@$userId<small>$date</small></p></span>
                 <div class='msg'>
                     <p>$content</p>
                 </div>
@@ -164,21 +168,39 @@ function twoots()
                 <img src=$mediaPath alt=''>
                 </div>
                     <div class='your_reaction'>
-                        <div class='comment'><i class='fa-solid fa-comment'></i><p>12</p></div>
-                        <div class='retweet'><i class='fa-solid fa-retweet'></i><p>12</p></div>
-                        <div class='like'><i class='fa-solid fa-heart'></i><p>12</p></div>
-                        <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>12</p></div>
+                        <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
+                        <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
+                        <div class='like'><i class='fa-solid fa-heart'></i><p>$likeCount</p></div>
+                        <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>0</p></div>
                     </div>
                 </div>";
             }
         }
+    }
 
-        
-        if($nickname == $pseudo){
-            return (boolean)false;
+    return $post;
+}
+
+function GetUserId($nickname)
+{
+    $hostname="localhost";//à changer
+    $username="root";//nom d'utilisateur pour acc�der au serveur (root)
+    $password="root"; //mot de passe pour acc�der au serveur (root)
+    $dbname="twotter"; //nom de la base de donn�es
+    $connexion = mysqli_connect($hostname, $username, $password, $dbname);
+    $requete = "SELECT * FROM `users`";
+    $resultat = mysqli_query($connexion, $requete);
+    while ($ligne = $resultat -> fetch_assoc()) 
+    {
+        if($ligne['nickname'] == $nickname)
+        {    
+            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
+            return $ligne['id'];
         }
     }
+    return null;
 }
+
 
 function Console($data) 
 {
