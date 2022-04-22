@@ -338,8 +338,27 @@
 .show_more:hover{
     border-radius: 0 0 20px 20px;
 }
-
-
+/*profil*/
+.profile_box{
+    overflow-y: hidden;
+    width: 100%;
+    border-left: 1px solid var(--tw-border);
+    border-bottom: 1px solid var(--tw-border);
+}
+.other_profile#profile_img{
+    margin-top: -55px;
+    margin-left: 15px;
+    z-index: 1000;
+}
+.other_profile#profile_img img{
+    width: 90px;
+    height: 90px;
+    opacity: 1;
+}
+#profil_name{
+    margin-left: 15px;
+    padding-bottom: 10px;
+}
 @media only screen and (max-width: 1450px){
     .option span{
         display: none;

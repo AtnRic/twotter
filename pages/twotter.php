@@ -29,7 +29,7 @@ require '../tools/header.php'
                     <div class="profil_message">
                         <form action="../tools/upload.php" method='POST' enctype="multipart/form-data">
                             <div class="center_div">
-                                <span><img src="../images/bat.png" alt=""></span>
+                                <span><img src="../images/bat.png" alt="photo de profil"></span>
                                 <label for="twoot"></label><input class="twoot" type="text" id="twoot" name="twoot" placeholder="Quoi de neuf ?" required >
                             </div>
                             <!--<input class="input_file" type="file" name="file" id="file"/>-->
