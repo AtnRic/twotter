@@ -10,12 +10,12 @@ function connect()
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
 
     if (!$connexion) {
-        return (boolean)false;
+        return false;
         die();
     }
     else
     {
-        return (boolean)true;
+        return true;
     }
 }
 

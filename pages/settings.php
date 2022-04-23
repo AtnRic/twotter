@@ -43,7 +43,6 @@ require '../tools/header.php'
         <div class="change">
             <form method="post">
                 <div class="change_center">
-                    <label for="prenom"></label><input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
                     <label for="nom"></label><input type="text" id="nom" name="nom" placeholder="Nom"><br>
                     <span class="label-file">Photo de profil :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
                     <input id="file" class="input-file" type="file" name="file"><br>
@@ -52,7 +51,6 @@ require '../tools/header.php'
                     <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
                 </div>
             </form>
-
         </div>
     </div>
 </div>
