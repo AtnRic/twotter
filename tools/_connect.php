@@ -69,7 +69,8 @@ function signup($pseudo, $mdp, $cmdp)
         }
     }
     // Voir comment créer une table.
-    $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp')"; //La requere SQL
+    $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
+    $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp_hash')"; //La requere SQL
     $resultat2 = mysqli_query($connexion, $requete2); //Executer la requete
     if ( $resultat2 == FALSE ){
         //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
@@ -95,7 +96,7 @@ function signin($pseudo, $mdp)
         //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
         return (boolean)false;
     }
-
+    $mdp_hash = hash('sha256', $_POST['mdpco']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
     $find = false;
 
     while ($ligne = $resultat -> fetch_assoc()) {
@@ -103,7 +104,7 @@ function signin($pseudo, $mdp)
         $password = $ligne['password']; 
         $id = $ligne['id'];
         if($nickname == $pseudo){
-            if($password == $mdp){
+            if($password == $mdp_hash){
                 $find = true;
                 return (boolean)true;
             }
