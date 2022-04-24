@@ -10,7 +10,7 @@ echo "
                     <div><a href=''><i class='fa-solid fa-bookmark'></i><span>Enregistré</span></a></div>
                     <div><a href='../pages/profil.php'><i class='fa-solid fa-user'></i><span>Profil</span></a></div>
                     <div><a href='../pages/settings.php'><i class='fa-solid fa-gear'></i><span>Paramètres</span></a></div>
-                    <div><a href=''><i class='fa-solid fa-arrow-right-from-bracket'></i><span>Déconnexion</span></a></div>
+                    <div><a href='../_logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i><span>Déconnexion</span></a></div>
                     <div><button>Twoot</button></div>
                 </div>
             </div>

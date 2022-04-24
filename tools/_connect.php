@@ -5,7 +5,7 @@ function connect()
     $hostname="localhost";//à changer
     $username="root";//nom d'utilisateur pour acc�der au serveur (root)
     $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="db_twotter"; //nom de la base de donn�es
+    $dbname="twotter"; //nom de la base de donn�es
     
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
 
@@ -125,12 +125,12 @@ function getTwoots()
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
     $requete = "SELECT * FROM `twoots`";
     $resultat = mysqli_query($connexion, $requete);
+    $post = "";
 
     if ( $resultat == NULL){
         //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
         return (boolean)false;
     }
-    $post = "";
     while ($ligne = $resultat -> fetch_assoc())
     {            
         $postId = $ligne['postId']; 
@@ -139,8 +139,6 @@ function getTwoots()
         $date = $ligne['date']; 
         $likeCount = $ligne['likeCount'];         
         $mediaPath = $ligne['mediaPath']; 
-
-
         $requete2 = "SELECT * FROM `users`";
         $resultat2 = mysqli_query($connexion, $requete2);
         if ( $resultat2 == NULL){
@@ -148,10 +146,8 @@ function getTwoots()
         }
         while ($ligne2 = $resultat2 -> fetch_assoc())
         {
-            //echo Console(print_r($ligne2));
             if($ligne2['id'] == $userId)
             {
-                echo Console($postId);
                 $name = $ligne2['nickname'];
                 $post .= "<div class='other_tweet'>
                 <div class='profil_msg'>
@@ -178,7 +174,6 @@ function getTwoots()
                 </div>";
             }
         }
-        //echo Console($post);
     }
     return $post;
 }
@@ -202,7 +197,6 @@ function GetUserId($nickname)
     }
     return null;
 }
-
 
 function Console($data) 
 {
