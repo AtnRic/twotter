@@ -129,7 +129,7 @@ function getTwoots()
         //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
         return (boolean)false;
     }
-
+    $post = "";
     while ($ligne = $resultat -> fetch_assoc()) 
     {            
         $postId = $ligne['postId']; 
@@ -138,7 +138,7 @@ function getTwoots()
         $date = $ligne['date']; 
         $likeCount = $ligne['likeCount'];         
         $mediaPath = $ligne['mediaPath']; 
-        $post = "";
+
 
         $requete2 = "SELECT * FROM `users`";
         $resultat2 = mysqli_query($connexion, $requete2);
@@ -150,8 +150,9 @@ function getTwoots()
             //echo Console(print_r($ligne2));
             if($ligne2['id'] == $userId)
             {
+                echo Console($postId);
                 $name = $ligne2['nickname'];
-                $post = $post . "<div class='other_tweet'>
+                $post .= "<div class='other_tweet'>
                 <div class='profil_msg'>
                     <div class='other_profile'>
                 <!--photo profil-->
@@ -176,6 +177,7 @@ function getTwoots()
                 </div>";
             }
         }
+        //echo Console($post);
     }
 
     return $post;
