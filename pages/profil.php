@@ -15,40 +15,57 @@ require '../tools/header.php'
 <div class="container">
     <!--sidebar-->
     <?php
-    include '../tools/sidebar.php'
-    ?>
-    <!--content menu-->
-    <div class="content_menu">
-        <div class="prefer">
+    include '../tools/sidebar.php';
+    include '../tools/_connect.php';
+
+    $nickname = $_COOKIE['login'];
+    $ban = GetUserBanPath($nickname);
+    $pdp = GetUserPdpPath($nickname);
+    $desc = GetUserDesc($nickname);
+    $name = GetUserName($nickname);
+
+    
+
+if($name = "" || $name == null){
+    $name = $_COOKIE['login'];
+}
+if($desc = "" || $desc == null){
+    $desc = "L'utilisateur n'a pas encore défini de description.";
+}
+if($ban = "" || $ban == null){
+    $ban = "../images/banner.png";
+}
+    echo "<div class='content_menu'>
+        <div class='prefer'>
                 <span>
-                    <a href="">Profil</a>
+                    <a href=''>Profil</a>
                 </span>
         </div>
-        <div class="profile_box">
-            <div class="banner">
+        <div class='profile_box'>
+            <div class='banner'>
                 <!--bannière-->
                 <style>.banner{
                         height: 200px;
                         width: 100%;
                         background-position: center;
                         background-size: cover;
-                        background-image: url("../images/banner.png")
+                        background-image: url($ban)
                     }
                 </style>
             </div>
-            <div class="other_profile" id="profile_img">
+            <div class='other_profile' id='profile_img'>
                 <!--photo profil-->
-                <img src="../images/pp/karadoc.PNG" alt="photo de profil">
+                <img src='$pdp' alt='photo de profil'>
             </div>
-            <div class="name_msg" id="profil_name">
-                <span><p><b>Karadoc de Vannes</b><i class="fa-solid fa-badge-check"></i>@Karadoc</p></span>
+            <div class='name_msg' id='profil_name'>
+                <span><p><b>". GetUserName($nickname) ."</b><i class='fa-solid fa-badge-check'></i>@$nickname</p></span>
                 <!--description-->
-                <div class="msg">
-                    <p>La neige qui poudroie dans la solitude de notre enfance</p>
+                <div class='msg'>
+                    <p>". GetUserDesc($nickname) . "</p>
                 </div>
             </div>
-        </div>
-
+        </div>";
+    ?>
         <div class="others_tweets">
             <!--each person-->
             <div class="other_tweet">

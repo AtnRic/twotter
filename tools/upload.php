@@ -2,6 +2,7 @@
 <?php
 
     include '_connect.php';
+    echo Console($_FILES["file"]["name"]);
 
     $File = '../images/media/' .basename($_FILES["file"]["name"]);
     $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));
@@ -49,7 +50,7 @@
             return (boolean)false;
         }
     }
-    header('Location: ../pages/twotter.php');
+    //header('Location: ../pages/twotter.php');
 
 //else echo "extension non valide";
 ?>

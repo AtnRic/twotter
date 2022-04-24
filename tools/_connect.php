@@ -10,12 +10,14 @@ function connect()
     $connexion = mysqli_connect($hostname, $username, $password, $dbname);
 
     if (!$connexion) {
-        return false;
+        echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
+        return (boolean)false;
         die();
     }
     else
     {
-        return true;
+        echo Console('Cnt : ' . $hostname);
+        return $connexion;
     }
 }
 
@@ -25,7 +27,11 @@ function passwd($mdp)
     $majuscule = preg_match('@[A-Z]@', $mdp);
     $minuscule = preg_match('@[a-z]@', $mdp);
     $chiffre = preg_match('@[0-9]@', $mdp);
-                          
+            
+    echo Console($majuscule);
+    echo Console($minuscule);
+    echo Console($chiffre);
+
     if(!$majuscule || !$minuscule || !$chiffre || strlen($mdp) < 8){
         return (boolean)false;          
     }
@@ -56,7 +62,7 @@ function signup($pseudo, $mdp, $cmdp)
     $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
     if ( $resultat == NULL){
-       //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+       echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
        return (boolean)false;
     }
 
@@ -65,6 +71,7 @@ function signup($pseudo, $mdp, $cmdp)
     while ($ligne = $resultat -> fetch_assoc()) {
         $nickname = $ligne['nickname']; 
         if($nickname == $pseudo){
+            echo Console("Same nickname.");
             return (boolean)false;
         }
     }
@@ -73,7 +80,7 @@ function signup($pseudo, $mdp, $cmdp)
     $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp_hash')"; //La requere SQL
     $resultat2 = mysqli_query($connexion, $requete2); //Executer la requete
     if ( $resultat2 == FALSE ){
-        //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+        echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
         return (boolean)false;
 
     }
@@ -118,11 +125,7 @@ function signin($pseudo, $mdp)
 
 function getTwoots()
 {
-    $hostname="localhost";//à changer
-    $username="root";//nom d'utilisateur pour acc�der au serveur (root)
-    $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="twotter"; //nom de la base de donn�es
-    $connexion = mysqli_connect($hostname, $username, $password, $dbname);
+    $connexion = connect();
     $requete = "SELECT * FROM `twoots`";
     $resultat = mysqli_query($connexion, $requete);
     $post = "";
@@ -148,15 +151,15 @@ function getTwoots()
         {
             if($ligne2['id'] == $userId)
             {
-                $name = $ligne2['nickname'];
+                $nickname = $ligne2['nickname'];
                 $post .= "<div class='other_tweet'>
                 <div class='profil_msg'>
                     <div class='other_profile'>
                 <!--photo profil-->
-                        <img src='../images/pp/karadoc.PNG' alt='photo de profil'>
+                        <img src=". GetUserPdpPath($nickname) ." alt='photo de profil'>
                     </div>
                 <div class='name_msg'>
-                    <span><p><b>$name</b><i class='fa-solid fa-badge-check'></i>@$userId<small>$date</small></p></span>
+                    <span><p><b>". GetUserName($nickname) ."</b><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
                 <div class='msg'>
                     <p>$content</p>
                 </div>
@@ -180,11 +183,7 @@ function getTwoots()
 
 function GetUserId($nickname)
 {
-    $hostname="localhost";//à changer
-    $username="root";//nom d'utilisateur pour acc�der au serveur (root)
-    $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="twotter"; //nom de la base de donn�es
-    $connexion = mysqli_connect($hostname, $username, $password, $dbname);
+    $connexion = connect();
     $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
     while ($ligne = $resultat -> fetch_assoc()) 
@@ -193,6 +192,70 @@ function GetUserId($nickname)
         {    
             echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
             return $ligne['id'];
+        }
+    }
+    return null;
+}
+
+function GetUserPdpPath($nickname)
+{
+    $connexion = connect();
+    $requete = "SELECT * FROM `users`";
+    $resultat = mysqli_query($connexion, $requete);
+    while ($ligne = $resultat -> fetch_assoc()) 
+    {
+        if($ligne['nickname'] == $nickname)
+        {    
+            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
+            return $ligne['pdpPath'];
+        }
+    }
+    return null;
+}
+
+function GetUserBanPath($nickname)
+{
+    $connexion = connect();
+    $requete = "SELECT * FROM `users`";
+    $resultat = mysqli_query($connexion, $requete);
+    while ($ligne = $resultat -> fetch_assoc()) 
+    {
+        if($ligne['nickname'] == $nickname)
+        {    
+            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
+            return $ligne['banPath'];
+        }
+    }
+    return null;
+}
+
+function GetUserDesc($nickname)
+{
+    $connexion = connect();
+    $requete = "SELECT * FROM `users`";
+    $resultat = mysqli_query($connexion, $requete);
+    while ($ligne = $resultat -> fetch_assoc()) 
+    {
+        if($ligne['nickname'] == $nickname)
+        {    
+            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
+            return $ligne['desc'];
+        }
+    }
+    return null;
+}
+
+function GetUserName($nickname)
+{
+    $connexion = connect();
+    $requete = "SELECT * FROM `users`";
+    $resultat = mysqli_query($connexion, $requete);
+    while ($ligne = $resultat -> fetch_assoc()) 
+    {
+        if($ligne['nickname'] == $nickname)
+        {    
+            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
+            return $ligne['Nom'];
         }
     }
     return null;

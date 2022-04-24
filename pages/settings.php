@@ -41,13 +41,27 @@ require '../tools/header.php'
         </div>
         <!--form nom/prénom/photo profil/bannière-->
         <div class="change">
-            <form method="post">
+            <form action="../tools/desc.php" method="post">
                 <div class="change_center">
-                    <label for="nom"></label><input type="text" id="nom" name="nom" placeholder="Nom"><br>
+                <label for="nom"></label><input type="text" id="nom" name="nom" placeholder="Nom"><br>
+                    <label for="nom"></label><input type="text" id="nom" name="desc" placeholder="Description"><br>
+                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
+                </div>
+            </form>
+        </div>
+        <div class="change">
+            <form action="../tools/pdp.php" method="post">
+                <div class="change_center">
                     <span class="label-file">Photo de profil :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
-                    <input id="file" class="input-file" type="file" name="file"><br>
+                    <input id="file" class="input-file" type="file" name="fileP"><br>
+                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
+                </div>
+            </form>
+        </div><div class="change">
+            <form action="../tools/ban.php" method='POST' enctype="multipart/form-data">
+                <div class="change_center">
                     <span class="label-file">Bannière :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
-                    <input id="banner" class="input-file" type="file" name="banner"><br>
+                    <input id="file" class="input-file" type="file" name="fileB"><br>
                     <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
                 </div>
             </form>

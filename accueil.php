@@ -67,17 +67,14 @@
 </body>
 
 
-
-
-     
     <?php
     include 'tools/_connect.php';
     // Register.
         $count = 0;
         if(isset($_POST['mdpin']))
         {
-
             if(!passwd($_POST['mdpin'])){
+                echo Console("Password wrong.");
                 echo "<style>
                 .popup #mdpin{
                     outline: none;
@@ -93,6 +90,7 @@
             }
             //on profite du isset pour le mot de passe pour verifier que les autres champs soient biens remplis
             if(empty($_POST['pseudo'])){
+                echo Console("Pseudo empty.");
                 echo "<style>
                     .popup #pseudo{
                         outline: none;
@@ -108,6 +106,8 @@
             }
 
         if(empty($_POST['mdpin'])){
+            echo Console("Password empty.");
+
                 echo "<style>
                     .popup #mdpin{
                         outline: none;
@@ -119,6 +119,8 @@
                     </style>"; 
             }
             if(empty($_POST['verifmdp'])){
+                echo Console("Password empty.");
+
                 echo "<style>
                     .popup #verifmdp{
                         outline: none;
@@ -145,6 +147,8 @@
         //on vérifie les mdp (inscription)
         if(isset($_POST['mdpin']) && isset($_POST['verifmdp'])){
             if(!verifpasswd($_POST['mdpin'], $_POST['verifmdp'])){
+                echo Console("Password 1 != 2");
+
                 echo "<style>
                 .popup #verifmdp, #mdpin{
                     outline: none;
@@ -168,7 +172,8 @@
             echo Console("Connected to twooter.");
             $count++;
             }  
-            else{
+            else{            
+            echo Console("Signup fail.");
             echo "<style>
             .popup #mdpin{
                 outline: none;
@@ -183,7 +188,8 @@
 
         //si les 3 conditions sont vérifiées :
         if($count==4)
-        {
+        {            echo Console("Not to twooter.");
+
             $login= $_POST['pseudo'];
             $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
             $_SESSION["pseudo"]=$login; //Variable de session "pseudo"
