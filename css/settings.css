@@ -50,9 +50,9 @@
     color: #f39c12;
 }
 .sub{
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: -20px;
-    float: right;
+
     width: 100px;
     height: 30px;
     color: white;
@@ -63,14 +63,19 @@
     align-items: center;
     margin: auto;
 }
-.change form input{
+.change_center{
+    margin-top: 10px;
+    width: 220px;
     margin: auto;
 }
-.change form #nom, #prenom{
+.change form #nom, #prenom {
     width: 200px;
     height: 30px;
     border-radius: 5px;
     margin: 5px;
-    padding : 10px;
+    padding: 10px;
     border-color: var(--tw-blue);
 }
+.sub#sub2{
+     margin-left: 50px;
+ }

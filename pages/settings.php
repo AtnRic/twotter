@@ -42,15 +42,15 @@ require '../tools/header.php'
         <!--form nom/prénom/photo profil/bannière-->
         <div class="change">
             <form method="post">
-                <label for="prenom"></label><input type="text" id="prenom" name="prenom" placeholder="Prénom"><br>
-                <label for="nom"></label><input type="text" id="nom" name="nom" placeholder="Nom"><br>
-                <span class="label-file">Photo de profil :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
-                <input id="file" class="input-file" type="file" name="file"><br>
-                <span class="label-file">Bannière :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
-                <input id="banner" class="input-file" type="file" name="banner"><br>
-                <input type="submit" class="modif" name='modif' value="Modifier">
+                <div class="change_center">
+                    <label for="nom"></label><input type="text" id="nom" name="nom" placeholder="Nom"><br>
+                    <span class="label-file">Photo de profil :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
+                    <input id="file" class="input-file" type="file" name="file"><br>
+                    <span class="label-file">Bannière :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
+                    <input id="banner" class="input-file" type="file" name="banner"><br>
+                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
+                </div>
             </form>
-
         </div>
     </div>
 </div>

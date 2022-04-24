@@ -60,7 +60,6 @@ INSERT INTO `users` (`nickname`, `password`, `id`, `pdpPath`) VALUES
 ('pokpopl', 'Verhaeghe10', 4, NULL),
 ('AdrVrg', 'oijoij', 5, NULL),
 ('iuhiuh', 'Verhaeghe10', 6, NULL),
-('opkpokpg', 'Verhaeghe10', 7, NULL),
 ('AdrVr', 'Verhaeghe10', 8, NULL);
 
 --
