@@ -11,8 +11,7 @@ function connect()
 
     if (!$connexion) {
         echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-        return (boolean)false;
-        die();
+        return false;
     }
     else
     {
@@ -33,10 +32,10 @@ function passwd($mdp)
     echo Console($chiffre);
 
     if(!$majuscule || !$minuscule || !$chiffre || strlen($mdp) < 8){
-        return (boolean)false;          
+        return false;
     }
     else{
-        return (boolean)true;
+        return true;
     }
 }
 
@@ -44,10 +43,10 @@ function passwd($mdp)
 function verifpasswd($mdp, $verif)
 {
         if($verif==$mdp){
-            return (boolean)true;
+            return true;
         }
         else{
-            return (boolean)false;
+            return false;
         }
 }
 
@@ -63,7 +62,7 @@ function signup($pseudo, $mdp, $cmdp)
     $resultat = mysqli_query($connexion, $requete);
     if ( $resultat == NULL){
        echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-       return (boolean)false;
+       return false;
     }
 
     $find = false;
@@ -72,16 +71,16 @@ function signup($pseudo, $mdp, $cmdp)
         $nickname = $ligne['nickname']; 
         if($nickname == $pseudo){
             echo Console("Same nickname.");
-            return (boolean)false;
+            return false;
         }
     }
     // Voir comment créer une table.
     $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
     $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp_hash')"; //La requere SQL
     $resultat2 = mysqli_query($connexion, $requete2); //Executer la requete
-    if ( $resultat2 == FALSE ){
+    if (!$resultat2){
         echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-        return (boolean)false;
+        return false;
 
     }
     else{
@@ -123,63 +122,73 @@ function signin($pseudo, $mdp)
     return (boolean)false;
 }
 
+
 function getTwoots()
 {
-    $connexion = connect();
-    $requete = "SELECT * FROM `twoots`";
-    $resultat = mysqli_query($connexion, $requete);
     $post = "";
+    $connexion = connect();
+    $requete_limite = 'SELECT MAX(postId) AS Maximum FROM twoots';
+    $resultat_limite = mysqli_query($connexion, $requete_limite);
 
-    if ( $resultat == NULL){
-        //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
-        return (boolean)false;
+    if (!$resultat_limite){
+        echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>" ;
+        die();
     }
-    while ($ligne = $resultat -> fetch_assoc())
-    {            
-        $postId = $ligne['postId']; 
-        $userId = $ligne['userId'] . ' '; 
-        $content = $ligne['content'];         
-        $date = $ligne['date']; 
-        $likeCount = $ligne['likeCount'];         
-        $mediaPath = $ligne['mediaPath']; 
+    $limite = mysqli_fetch_assoc($resultat_limite);
+    $limite = (int)$limite['Maximum'];
+
+    for($i = $limite; $i >= 1; $i--) {
+        $requete = "SELECT * FROM twoots  WHERE postId = '{$i}'";
+        $resultat = mysqli_query($connexion, $requete);
+
+        if (!$resultat) {
+            echo "<p>Erreur d'exécution de la requete :" . mysqli_error($connexion) . "</p>";
+            die();
+        }
+        $ligne = $resultat->fetch_assoc();
+
+        $userId = $ligne['userId'] . ' ';
+        $content = $ligne['content'];
+        $date = $ligne['date'];
+        $likeCount = $ligne['likeCount'];
+        $mediaPath = $ligne['mediaPath'];
+
         $requete2 = "SELECT * FROM `users`";
         $resultat2 = mysqli_query($connexion, $requete2);
-        if ( $resultat2 == NULL){
-            return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+        if ($resultat2 == NULL) {
+            return false;
         }
-        while ($ligne2 = $resultat2 -> fetch_assoc())
-        {
-            if($ligne2['id'] == $userId)
-            {
+        while ($ligne2 = $resultat2->fetch_assoc()) {
+            if ($ligne2['id'] == $userId) {
                 $nickname = $ligne2['nickname'];
                 $post .= "<div class='other_tweet'>
-                <div class='profil_msg'>
-                    <div class='other_profile'>
-                <!--photo profil-->
-                        <img src=". GetUserPdpPath($nickname) ." alt='photo de profil'>
+                    <div class='profil_msg'>
+                        <div class='other_profile'>
+                            <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
+                        </div>
+                    <div class='name_msg'>
+                        <span><p><b>" . GetUserName($nickname) . "</b><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
+                    <div class='msg'>
+                        <p>$content</p>
                     </div>
-                <div class='name_msg'>
-                    <span><p><b>". GetUserName($nickname) ."</b><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
-                <div class='msg'>
-                    <p>$content</p>
-                </div>
-                </div>
-                </div>
-                <div class='image_video'>
-                <img src=$mediaPath alt=''>
-                </div>
-                    <div class='your_reaction'>
-                        <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
-                        <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
-                        <div class='like'><i class='fa-solid fa-heart'></i><p>$likeCount</p></div>
-                        <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>0</p></div>
                     </div>
-                </div>";
+                    </div>
+                    <div class='image_video'>
+                    <img src=$mediaPath alt=''>
+                    </div>
+                        <div class='your_reaction'>
+                            <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
+                            <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
+                            <div class='like'><i class='fa-solid fa-heart'></i><p>$likeCount</p></div>
+                            <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>0</p></div>
+                        </div>
+                    </div>";
             }
         }
     }
     return $post;
 }
+
 
 function getUserTwoots($User)
 {
@@ -188,12 +197,29 @@ function getUserTwoots($User)
     $resultat = mysqli_query($connexion, $requete);
     $post = "";
 
-    if ( $resultat == NULL){
-        //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
-        return (boolean)false;
+    $requete_limite = 'SELECT MAX(postId) AS Maximum FROM twoots';
+    $resultat_limite = mysqli_query($connexion, $requete_limite);
+
+    if (!$resultat_limite){
+        echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>" ;
+        die();
     }
-    while ($ligne = $resultat -> fetch_assoc())
-    {            
+    $limite = mysqli_fetch_assoc($resultat_limite);
+    $limite = (int)$limite['Maximum'];
+    if ( $resultat == NULL){
+        return false;
+    }
+
+    for($i = $limite; $i >= 1; $i--) {
+        $requete = "SELECT * FROM twoots  WHERE postId = '{$i}'";
+        $resultat = mysqli_query($connexion, $requete);
+
+        if (!$resultat) {
+            echo "<p>Erreur d'exécution de la requete :" . mysqli_error($connexion) . "</p>";
+            die();
+        }
+        $ligne = $resultat->fetch_assoc();
+
         $postId = $ligne['postId']; 
         $userId = $ligne['userId'] . ' '; 
         $content = $ligne['content'];         
