@@ -1,6 +1,7 @@
 <!-- Script php d'enregistrement des images-->
 <?php
     include '_connect.php';
+    
     echo Console($_FILES["fileP"]["name"]);
     $File = '../images/pp/' .basename($_FILES["fileP"]["name"]);
     $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));

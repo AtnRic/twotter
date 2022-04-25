@@ -14,9 +14,9 @@ require '../tools/header.php'
 <body>
 <div class="container">
     <!--sidebar-->
-    <?php
-    include '../tools/sidebar.php';
+    <?php    
     include '../tools/_connect.php';
+    include '../tools/sidebar.php';
 
     $nickname = $_COOKIE['login'];
     $ban = GetUserBanPath($nickname);

@@ -11,6 +11,7 @@ $cssPath_dark = "twotter-css/twotter-dark.css";
 require '../tools/header.php';
 require '../tools/_connect.php';
 
+
 ?>
 
 <body>
@@ -26,12 +27,16 @@ require '../tools/_connect.php';
                     <a href="">Accueil</a>
                 </span>
             </div>
+            
             <div class="you_tweet_other_tweet">
                 <div class="your_tweet">
                     <div class="profil_message">
                         <form action="../tools/upload.php" method='POST' enctype="multipart/form-data">
                             <div class="center_div">
-                                <span><img src="../images/bat.png" alt="photo de profil"></span>
+                                <?php
+                                $pdp = GetUserPdpPath($_COOKIE['login']);
+                                echo "<span><img src='$pdp' alt='photo de profil'></span>";
+                                ?>
                                 <label for="twoot"></label><input class="twoot" type="text" id="twoot" name="twoot" placeholder="Quoi de neuf ?" required >
                             </div>
                             <span class="label-file"><label for="file"><i class="fa-solid fa-image"></i></label></span>
