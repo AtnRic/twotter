@@ -187,8 +187,8 @@
 .name-msg{
     cursor:pointer;
 }
-.name-msg small{
-    float: right;
+.name_msg span small{
+    margin-left: 5px;
 }
 .msg{
     font-size: 16px;

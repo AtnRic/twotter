@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : Dim 24 avr. 2022 à 14:30
+-- Généré le : lun. 25 avr. 2022 à 08:33
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -48,7 +48,9 @@ INSERT INTO `twoots` (`userId`, `postId`, `parentId`, `content`, `date`, `likeCo
 (9, 36, 0, 'test de julien', '04.23.22', 0, '../images/media/caca-des-canards-cest-caca.gif'),
 (9, 37, 0, 'On bute Karadoc', '04.24.22', 0, '../images/media/'),
 (9, 38, 0, 'On bute Karadoc', '04.24.22', 0, '../images/media/'),
-(9, 39, 0, 'Elle est où la poulette ?', '04.24.22', 0, '../images/media/debile-et-innatendu.gif');
+(9, 39, 0, 'Elle est où la poulette ?', '04.24.22', 0, '../images/media/debile-et-innatendu.gif'),
+(10, 40, 0, 'qezsrdtyguhi', '04.24.22', 0, '../images/media/karadoc.png'),
+(10, 41, 0, 'tyfugygyu', '04.24.22', 0, '../images/media/karadoc.png');
 
 -- --------------------------------------------------------
 
@@ -60,23 +62,19 @@ CREATE TABLE `users` (
   `nickname` varchar(64) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   `id` int(64) NOT NULL,
-  `pdpPath` varchar(16) DEFAULT NULL,
-  `Nom` varchar(30) NOT NULL
+  `pdpPath` varchar(100) DEFAULT NULL,
+  `banPath` varchar(100) DEFAULT NULL,
+  `Nom` varchar(100) DEFAULT NULL,
+  `desc` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`nickname`, `password`, `id`, `pdpPath`, `Nom`) VALUES
-('AdrVr', 'Verhaeghe10', 1, NULL, ''),
-('pokpo', 'Verhaeghe10', 3, NULL, ''),
-('pokpopl', 'Verhaeghe10', 4, NULL, ''),
-('AdrVrg', 'oijoij', 5, NULL, ''),
-('iuhiuh', 'Verhaeghe10', 6, NULL, ''),
-('opkpokpg', 'Verhaeghe10', 7, NULL, ''),
-('AdrVr', 'Verhaeghe10', 8, NULL, ''),
-('Antoine', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 9, NULL, '');
+INSERT INTO `users` (`nickname`, `password`, `id`, `pdpPath`, `banPath`, `Nom`, `desc`) VALUES
+('Antoine', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 9, '../images/pp/téléchargé.jpg', NULL, 'JEAN MICHEL BLANQUER', NULL),
+('AdrVrg', 'db96f67f5285c29f52734693296eeb3f71dff4ae3d18ac2e5d36d0364ced7b4a', 10, '../images/pp/téléchargé.jpg', NULL, 'Patrick V.E', 'J apprécie les fruits au sirop.');
 
 --
 -- Index pour les tables déchargées
@@ -102,13 +100,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `twoots`
 --
 ALTER TABLE `twoots`
-  MODIFY `postId` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `postId` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

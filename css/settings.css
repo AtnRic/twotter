@@ -68,7 +68,7 @@
     width: 220px;
     margin: auto;
 }
-.change form #nom, #prenom {
+.change form .change_center #nom, .change form .change_center #desc {
     width: 200px;
     height: 30px;
     border-radius: 5px;

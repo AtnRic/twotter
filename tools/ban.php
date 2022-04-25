@@ -2,7 +2,7 @@
 <?php
     include '_connect.php';
     echo Console($_FILES["fileB"]["name"]);
-    $File = '../images/pp/' .basename($_FILES["fileB"]["name"]);
+    $File = '../images/ban/' .basename($_FILES["fileB"]["name"]);
     $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));
     $valide = array('jpg', 'png', 'gif', 'jpeg');
     

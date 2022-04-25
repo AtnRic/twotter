@@ -1,7 +1,6 @@
 <?php
     session_start();
     if(isset($_COOKIE['login']) && isset($_COOKIE['mdp_hash'])) { //si le cookie existe
-        //on vérifie dans la base de donnée et on connecte au bon compte
         $newURL = "pages/twotter.php";
         header('Location: '.$newURL);
         die();
