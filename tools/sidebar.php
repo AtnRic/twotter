@@ -1,12 +1,9 @@
 <?php
-
-$pdpPath = GetUserPdpPath($_COOKIE['login']);
-
 echo "
     <div class='option_menu'>
         <div class='option_center'>
             <div class='logo'>
-                <img src='$pdpPath' alt='logo'>
+                <img src='../images/bat.png' alt='logo'>
                 <div class='option'>
                     <div><a href='../pages/twotter.php'><i class='fa-solid fa-house'></i><span>Accueil</span></a></div>
                     <div><a href=''><i class='fa-solid fa-arrow-trend-up'></i><span>Tendances</span></a></div>
@@ -19,4 +16,3 @@ echo "
             </div>
         </div>
     </div>";
-?>

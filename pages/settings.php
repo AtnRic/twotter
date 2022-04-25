@@ -15,7 +15,10 @@ require '../tools/header.php'
 <body>
 <div class="container">
     <!--sidebar-->
-    <?php include '../tools/sidebar.php' ?>
+    <?php     
+    include '../tools/_connect.php';
+    include '../tools/sidebar.php' ;
+    ?>
     <!--content menu-->
     <div class="content_menu">
         <div class="prefer">
