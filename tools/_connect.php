@@ -181,6 +181,67 @@ function getTwoots()
     return $post;
 }
 
+function getUserTwoots($User)
+{
+    $connexion = connect();
+    $requete = "SELECT * FROM `twoots`";
+    $resultat = mysqli_query($connexion, $requete);
+    $post = "";
+
+    if ( $resultat == NULL){
+        //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+        return (boolean)false;
+    }
+    while ($ligne = $resultat -> fetch_assoc())
+    {            
+        $postId = $ligne['postId']; 
+        $userId = $ligne['userId'] . ' '; 
+        $content = $ligne['content'];         
+        $date = $ligne['date']; 
+        $likeCount = $ligne['likeCount'];         
+        $mediaPath = $ligne['mediaPath']; 
+
+        if($userId == GetUserId($User)){
+        $requete2 = "SELECT * FROM `users`";
+        $resultat2 = mysqli_query($connexion, $requete2);
+        if ( $resultat2 == NULL){
+            return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
+        }
+        while ($ligne2 = $resultat2 -> fetch_assoc())
+        {
+            if($ligne2['id'] == $userId)
+            {
+                $nickname = $ligne2['nickname'];
+                $post .= "<div class='other_tweet'>
+                <div class='profil_msg'>
+                    <div class='other_profile'>
+                <!--photo profil-->
+                        <img src=". GetUserPdpPath($nickname) ." alt='photo de profil'>
+                    </div>
+                <div class='name_msg'>
+                    <span><p><b>". GetUserName($nickname) ."</b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
+                <div class='msg'>
+                    <p>$content</p>
+                </div>
+                </div>
+                </div>
+                <div class='image_video'>
+                <img src=$mediaPath alt=''>
+                </div>
+                    <div class='your_reaction'>
+                        <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
+                        <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
+                        <div class='like'><i class='fa-solid fa-heart'></i><p>$likeCount</p></div>
+                        <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>0</p></div>
+                    </div>
+                </div>";
+            }
+        }
+    }
+    }
+    return $post;
+}
+
 function GetUserId($nickname)
 {
     $connexion = connect();
