@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 25 avr. 2022 à 08:33
+-- Généré le : lun. 25 avr. 2022 à 20:45
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -42,15 +42,11 @@ CREATE TABLE `twoots` (
 --
 
 INSERT INTO `twoots` (`userId`, `postId`, `parentId`, `content`, `date`, `likeCount`, `mediaPath`) VALUES
-(9, 33, 0, 'test de Julien', '04.22.22', 0, '../images/media/35-mirabelles-fesses.gif'),
-(9, 34, 0, 'test de julien à nouveau', '04.22.22', 0, '../images/media/en-garde-ma-mignonne.gif'),
-(9, 35, 0, 'test', '04.23.22', 0, '../images/media/'),
-(9, 36, 0, 'test de julien', '04.23.22', 0, '../images/media/caca-des-canards-cest-caca.gif'),
-(9, 37, 0, 'On bute Karadoc', '04.24.22', 0, '../images/media/'),
-(9, 38, 0, 'On bute Karadoc', '04.24.22', 0, '../images/media/'),
-(9, 39, 0, 'Elle est où la poulette ?', '04.24.22', 0, '../images/media/debile-et-innatendu.gif'),
-(10, 40, 0, 'qezsrdtyguhi', '04.24.22', 0, '../images/media/karadoc.png'),
-(10, 41, 0, 'tyfugygyu', '04.24.22', 0, '../images/media/karadoc.png');
+(9, 1, 0, 'test de julien', '04.25.22', 0, '../images/media/'),
+(9, 2, 0, 'test de julien à nouveau', '04.25.22', 0, '../images/media/'),
+(9, 3, 0, 'Le gras c est la vie', '04.25.22', 0, '../images/media/revolte.gif'),
+(9, 4, 0, 'Git quand il y a un conflit de version :', '04.25.22', 0, '../images/media/quest-ce-a-dire-que-ceci.gif'),
+(9, 5, 0, 'Quand tu merge 2 branches, git be like :', '04.25.22', 0, '../images/media/le-nouveau-code.gif');
 
 -- --------------------------------------------------------
 
@@ -73,8 +69,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`nickname`, `password`, `id`, `pdpPath`, `banPath`, `Nom`, `desc`) VALUES
-('Antoine', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 9, '../images/pp/téléchargé.jpg', NULL, 'JEAN MICHEL BLANQUER', NULL),
-('AdrVrg', 'db96f67f5285c29f52734693296eeb3f71dff4ae3d18ac2e5d36d0364ced7b4a', 10, '../images/pp/téléchargé.jpg', NULL, 'Patrick V.E', 'J apprécie les fruits au sirop.');
+('Antoine', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 9, '../images/pp/revolte.gif', NULL, 'Antoine', 'On est fort ! ...en pommes'),
+('AdrVrg', 'db96f67f5285c29f52734693296eeb3f71dff4ae3d18ac2e5d36d0364ced7b4a', 10, '../images/pp/téléchargé.jpg', NULL, 'Patrick V.E', 'J apprécie les fruits au sirop.'),
+('Karadoc', 'dc6d0026cfefaac20e111970c06253afed02992f3549126eb781bf969a6ae09b', 11, '../images/pp/karadoc.png', NULL, 'Karadoc de Vannes', 'La neige qui pourdoie dans la solitude de notre enfance');
 
 --
 -- Index pour les tables déchargées
@@ -100,13 +97,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `twoots`
 --
 ALTER TABLE `twoots`
-  MODIFY `postId` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `postId` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
