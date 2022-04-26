@@ -240,6 +240,14 @@
     font-size: 20px;
     padding: 5px 5px;
 }
+.like a:visited, .like a i:hover{
+    color: red;
+    text-decoration: none;
+}
+.bookmark a:visited, .bookmark a i:hover{
+    color: var(--tw-blue);
+    text-decoration: none;
+}
 .trending_menu{
     width: 100%;
 }

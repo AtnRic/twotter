@@ -53,6 +53,9 @@
 .your_tweet .profil_message form input.sub_twoot:hover{
     background-color: var(--tw-blue-hover);
 }
+.your_reaction i{
+    color: black;
+}
 .label-file{
     color: var(--tw-blue);
     background-color: inherit;
@@ -82,11 +85,20 @@
 .retweet:hover{
     color: green;
 }
-.like:hover{
-    color: red;
+.like a{
+    color: black;
 }
-.bookmark:hover{
+.bookmark a{
+    color: black;
+    text-decoration: none;
+}
+.like a:hover, .like a:visited{
+    color: red;
+    text-decoration: none;
+}
+.bookmark a:hover, .bookmark a:visited{
     color: var(--tw-blue);
+    text-decoration: none;
 }
 .search{
     background-color: white;

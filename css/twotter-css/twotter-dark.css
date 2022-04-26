@@ -8,6 +8,11 @@
     background-color: black;
 }
 
+
+.name_msg span a{
+    text-decoration: none;
+    color: white;
+}
 .option div a{
     color: white;
 }
@@ -70,6 +75,9 @@
 .other_tweet .your_reaction{
     color: var(--tw-grey);
 }
+.your_reaction i{
+    color: white;
+}
 .name_msg span i{
     color: var(--tw-blue);
 }
@@ -88,11 +96,19 @@
 .retweet:hover{
     color: green;
 }
-.like:hover{
-    color: red;
+.like a{
+    color: white;
 }
-.bookmark:hover{
+.bookmark a{
+    color: white;
+}
+.like a:hover, .like a:visited{
+    color: red;
+    text-decoration: none;
+}
+.bookmark a:hover, .bookmark a:visited{
     color: var(--tw-blue);
+    text-decoration: none;
 }
 .search{
     background-color: black;
