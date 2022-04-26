@@ -152,13 +152,18 @@ function getTwoots()
         while ($ligne2 = $resultat2->fetch_assoc()) {
             if ($ligne2['id'] == $userId) {
                 $nickname = $ligne2['nickname'];
+                $name = GetUserName($nickname);
+                if($name == ""){
+                    $name = $nickname;
+                }
                 $post .= "<div class='other_tweet'>
                     <div class='profil_msg'>
                         <div class='other_profile'>
                             <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
                         </div>
                     <div class='name_msg'>
-                        <span><p><a href='../pages/profil.php'><b>" . GetUserName($nickname) . "</b></a><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
+                    
+                        <span><p><a href='../pages/other_profil.php?pseudo=$nickname'><b>" . $name . "</b></a><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
                     <div class='msg'>
                         <p>$content</p>
                     </div>

@@ -41,5 +41,6 @@
                     return (boolean)false;
                 }
     }
-    header('Location: ../pages/profil.php');
+    $nickname = $_COOKIE['login'];
+    header("Location: ../pages/other_profil.php?pseudo=$nickname");
 ?>

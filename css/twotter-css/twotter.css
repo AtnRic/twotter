@@ -184,6 +184,12 @@
     padding: 0 4px 0 4px;
     font-size: 20px;
 }
+.name_msg span a{
+    text-decoration: none;
+}
+.name_msg span a:hover{
+    text-decoration: auto;
+}
 .name-msg{
     cursor:pointer;
 }
