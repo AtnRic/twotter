@@ -5,7 +5,7 @@
 
     $File = '../images/media/' .basename($_FILES["file"]["name"]);
     $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));
-    $valide = array('jpg', 'png', 'gif', 'jpeg');
+    $valide = array('jpg', 'png', 'gif', 'jpeg', 'webp');
     if (in_array($extension, $valide))
     {   
         //vérifie l'extension du fichier

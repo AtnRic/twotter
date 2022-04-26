@@ -5,7 +5,7 @@
     echo Console($_FILES["fileP"]["name"]);
     $File = '../images/pp/' .basename($_FILES["fileP"]["name"]);
     $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));
-    $valide = array('jpg', 'png', 'gif', 'jpeg');
+    $valide = array('jpg', 'png', 'gif', 'jpeg', 'webp');
     
     if (in_array($extension, $valide))
     {   

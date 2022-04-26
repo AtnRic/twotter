@@ -52,11 +52,7 @@ function verifpasswd($mdp, $verif)
 
 function signup($pseudo, $mdp, $cmdp)
 {
-    $hostname="localhost";//à changer
-    $username="root";//nom d'utilisateur pour acc�der au serveur (root)
-    $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="twotter"; //nom de la base de donn�es
-    $connexion = mysqli_connect($hostname, $username, $password, $dbname);
+    $connexion = connect();
 
     $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
@@ -90,12 +86,7 @@ function signup($pseudo, $mdp, $cmdp)
 				
 function signin($pseudo, $mdp)
 {
-    $hostname="localhost";//à changer
-    $username="root";//nom d'utilisateur pour acc�der au serveur (root)
-    $password="root"; //mot de passe pour acc�der au serveur (root)
-    $dbname="twotter"; //nom de la base de donn�es
-    $connexion = mysqli_connect($hostname, $username, $password, $dbname);
-
+    $connexion = connect();
     $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
     if ( $resultat == NULL){
@@ -167,7 +158,7 @@ function getTwoots()
                             <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
                         </div>
                     <div class='name_msg'>
-                        <span><p><b>" . GetUserName($nickname) . "</b><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
+                        <span><p><a href='../pages/profil.php'><b>" . GetUserName($nickname) . "</b></a><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
                     <div class='msg'>
                         <p>$content</p>
                     </div>
@@ -179,8 +170,8 @@ function getTwoots()
                         <div class='your_reaction'>
                             <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
                             <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
-                            <div class='like'><i class='fa-solid fa-heart'></i><p>$likeCount</p></div>
-                            <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>0</p></div>
+                            <div class='like'><a href='../tools/like.php'><i class='fa-solid fa-heart'></i></a><p>$likeCount</p></div>
+                            <div class='bookmark'><a href='../tools/bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                         </div>
                     </div>";
             }
@@ -206,7 +197,7 @@ function getUserTwoots($User)
     }
     $limite = mysqli_fetch_assoc($resultat_limite);
     $limite = (int)$limite['Maximum'];
-    if ( $resultat == NULL){
+    if ($resultat == NULL){
         return false;
     }
 
@@ -214,38 +205,33 @@ function getUserTwoots($User)
         $requete = "SELECT * FROM twoots  WHERE postId = '{$i}'";
         $resultat = mysqli_query($connexion, $requete);
 
-        if (!$resultat) {
-            echo "<p>Erreur d'exécution de la requete :" . mysqli_error($connexion) . "</p>";
-            die();
-        }
-        $ligne = $resultat->fetch_assoc();
+        if ($resultat) {
+            $ligne = $resultat->fetch_assoc();
 
-        $postId = $ligne['postId']; 
-        $userId = $ligne['userId'] . ' '; 
-        $content = $ligne['content'];         
-        $date = $ligne['date']; 
-        $likeCount = $ligne['likeCount'];         
-        $mediaPath = $ligne['mediaPath']; 
+            $postId = $ligne['postId'];
+            $userId = $ligne['userId'] . ' ';
+            $content = $ligne['content'];
+            $date = $ligne['date'];
+            $likeCount = $ligne['likeCount'];
+            $mediaPath = $ligne['mediaPath'];
 
-        if($userId == GetUserId($User)){
-        $requete2 = "SELECT * FROM `users`";
-        $resultat2 = mysqli_query($connexion, $requete2);
-        if ( $resultat2 == NULL){
-            return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
-        }
-        while ($ligne2 = $resultat2 -> fetch_assoc())
-        {
-            if($ligne2['id'] == $userId)
-            {
-                $nickname = $ligne2['nickname'];
-                $post .= "<div class='other_tweet'>
+            if($userId == GetUserId($User)) {
+                $requete2 = "SELECT * FROM `users`";
+                $resultat2 = mysqli_query($connexion, $requete2);
+                if ($resultat2 == NULL) {
+                    return "<p>Erreur d'exécution de la requete : " . mysqli_error($connexion) . "</p>";
+                }
+                while ($ligne2 = $resultat2->fetch_assoc()) {
+                    if ($ligne2['id'] == $userId) {
+                        $nickname = $ligne2['nickname'];
+                        $post .= "<div class='other_tweet'>
                 <div class='profil_msg'>
                     <div class='other_profile'>
                 <!--photo profil-->
-                        <img src=". GetUserPdpPath($nickname) ." alt='photo de profil'>
+                        <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
                     </div>
                 <div class='name_msg'>
-                    <span><p><b>". GetUserName($nickname) ."</b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
+                    <span><p><b>" . GetUserName($nickname) . "</b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
                 <div class='msg'>
                     <p>$content</p>
                 </div>
@@ -257,13 +243,14 @@ function getUserTwoots($User)
                     <div class='your_reaction'>
                         <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
                         <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
-                        <div class='like'><i class='fa-solid fa-heart'></i><p>$likeCount</p></div>
-                        <div class='bookmark'><i class='fa-solid fa-bookmark'></i><p>0</p></div>
+                        <div class='like'><a href='../tools/like.php'><i class='fa-solid fa-heart'></i></a><p>$likeCount</p></div>
+                        <div class='bookmark'><a href='../tools/bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                     </div>
                 </div>";
+                    }
+                }
             }
         }
-    }
     }
     return $post;
 }
@@ -294,10 +281,18 @@ function GetUserPdpPath($nickname)
         if($ligne['nickname'] == $nickname)
         {    
             echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
-            return $ligne['pdpPath'];
+            if($ligne['pdpPath']==NULL){
+                return "../images/pp/bat.png"; //photo de profil par défaut
+            }
+            else{
+                return $ligne['pdpPath'];
+            }
+
         }
     }
-    return null;
+
+    return NULL;
+
 }
 
 function GetUserBanPath($nickname)

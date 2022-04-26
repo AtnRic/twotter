@@ -71,7 +71,7 @@ if($ban = "" || $ban == null){
             <?php
                     $nickname = $_COOKIE['login'];
                     echo Console("Votre Id : " .$_COOKIE['login']);
-                    echo getUserTwoots($nickname);
+                    echo @getUserTwoots($nickname);
             ?>
         </div>
     </div>
@@ -124,7 +124,6 @@ if($ban = "" || $ban == null){
             </div>
         </div>
     </div>
-</div>
 
 </body>
 </html><?php

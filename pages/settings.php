@@ -91,7 +91,7 @@ else{
 setcookie('theme', $themeChoisi, time() + (3600*24*365));
 /*
 if (isset($_GET["theme"])){
-    header('Location: settings.php?theme=dark&sub=Enregistrer');
+    header('Location: settings.php');
 }*/
 ?>
 </html>

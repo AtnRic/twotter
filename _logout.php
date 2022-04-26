@@ -7,4 +7,4 @@
         unset($_COOKIE['mdp_hash']);     
     $newURL = "accueil.php";
     header('Location: '.$newURL);
-    ?>
+
