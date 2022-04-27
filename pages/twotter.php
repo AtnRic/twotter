@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='fr'>
+
 <!--le header se trouve dans le fichier header.php-->
 
 <?php
@@ -10,8 +11,6 @@ $cssPath_dark = "twotter-css/twotter-dark.css";
 
 require '../tools/header.php';
 require '../tools/_connect.php';
-
-
 ?>
 
 <body>
@@ -45,7 +44,6 @@ require '../tools/_connect.php';
                         </form>
                     </div>
                 </div>
-
             </div>
 
             <div class="others_tweets">

@@ -1,5 +1,7 @@
 <?php 
 
+include 'like.php';
+
 function connect()
 {
     $hostname="localhost";//à changer
@@ -15,7 +17,6 @@ function connect()
     }
     else
     {
-        echo Console('Cnt : ' . $hostname);
         return $connexion;
     }
 }
@@ -26,10 +27,6 @@ function passwd($mdp)
     $majuscule = preg_match('@[A-Z]@', $mdp);
     $minuscule = preg_match('@[a-z]@', $mdp);
     $chiffre = preg_match('@[0-9]@', $mdp);
-            
-    echo Console($majuscule);
-    echo Console($minuscule);
-    echo Console($chiffre);
 
     if(!$majuscule || !$minuscule || !$chiffre || strlen($mdp) < 8){
         return false;
@@ -66,7 +63,6 @@ function signup($pseudo, $mdp, $cmdp)
     while ($ligne = $resultat -> fetch_assoc()) {
         $nickname = $ligne['nickname']; 
         if($nickname == $pseudo){
-            echo Console("Same nickname.");
             return false;
         }
     }
@@ -143,7 +139,9 @@ function getTwoots()
         $date = $ligne['date'];
         $likeCount = $ligne['likeCount'];
         $mediaPath = $ligne['mediaPath'];
+        $postId = $ligne['postId'];
 
+        
         $requete2 = "SELECT * FROM `users`";
         $resultat2 = mysqli_query($connexion, $requete2);
         if ($resultat2 == NULL) {
@@ -173,12 +171,14 @@ function getTwoots()
                     <img src=$mediaPath alt=''>
                     </div>
                         <div class='your_reaction'>
-                            <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
-                            <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
-                            <div class='like'><a href='../tools/like.php'><i class='fa-solid fa-heart'></i></a><p>$likeCount</p></div>
+                            <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
+                            <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>" .
+                            GetLikeHTML($nickname, $postId)
+                            . "
                             <div class='bookmark'><a href='../tools/bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                         </div>
-                    </div>";
+                    </div>";                            
+
             }
         }
     }
@@ -246,9 +246,10 @@ function getUserTwoots($User)
                 <img src=$mediaPath alt=''>
                 </div>
                     <div class='your_reaction'>
-                        <div class='comment'><i class='fa-solid fa-comment'></i><p>0</p></div>
-                        <div class='retweet'><i class='fa-solid fa-retweet'></i><p>0</p></div>
-                        <div class='like'><a href='../tools/like.php'><i class='fa-solid fa-heart'></i></a><p>$likeCount</p></div>
+                    <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
+                    <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>" .
+                    GetLikeHTML($nickname, $postId)
+                    . "
                         <div class='bookmark'><a href='../tools/bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                     </div>
                 </div>";
@@ -269,7 +270,6 @@ function GetUserId($nickname)
     {
         if($ligne['nickname'] == $nickname)
         {    
-            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
             return $ligne['id'];
         }
     }
@@ -285,7 +285,6 @@ function GetUserPdpPath($nickname)
     {
         if($ligne['nickname'] == $nickname)
         {    
-            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
             if($ligne['pdpPath']==NULL){
                 return "../images/pp/bat.png"; //photo de profil par défaut
             }
@@ -309,7 +308,6 @@ function GetUserBanPath($nickname)
     {
         if($ligne['nickname'] == $nickname)
         {    
-            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
             return $ligne['banPath'];
         }
     }
@@ -325,7 +323,6 @@ function GetUserDesc($nickname)
     {
         if($ligne['nickname'] == $nickname)
         {    
-            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
             return $ligne['desc'];
         }
     }
@@ -341,7 +338,6 @@ function GetUserName($nickname)
     {
         if($ligne['nickname'] == $nickname)
         {    
-            echo Console('id utilisateur trouvé pour '. $nickname . ' : ' . $ligne['id']);
             return $ligne['Nom'];
         }
     }

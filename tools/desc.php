@@ -15,7 +15,7 @@
         echo Console($login);
 
         $start = array("'", "<p>", "</p>");
-        $end   = array(" ", "", "");
+        $end   = array("\'", "", "");
         $desc = str_replace($start, $end, $_POST['desc']);
   
                 $requete2 = "UPDATE `users` SET `desc` = '$desc' WHERE `users`.`nickname` = '$login'";
@@ -25,6 +25,7 @@
                     return (boolean)false;
                 }
     }
+
 
     if(isset($_POST['nom']) && !empty($_POST['nom']))
     {

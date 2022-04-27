@@ -25,7 +25,7 @@
     else
     {
         $start = array("'", "<p>", "</p>");
-        $end   = array(" ", "", "");
+        $end   = array("\'", "", "");
         $content = str_replace($start, $end, $_POST['twoot']);
 
         $userId = GetUserId($_COOKIE['login']);
