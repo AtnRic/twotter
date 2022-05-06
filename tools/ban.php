@@ -1,6 +1,6 @@
 <!-- Script php d'enregistrement des images-->
 <?php
-    include '_connect.php';
+    include '_main_tools.php';
     echo Console($_FILES["fileB"]["name"]);
     $File = '../images/ban/' .basename($_FILES["fileB"]["name"]);
     $extension = strtolower(pathinfo($File, PATHINFO_EXTENSION));

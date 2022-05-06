@@ -172,10 +172,9 @@ function getTwoots()
                     </div>
                         <div class='your_reaction'>
                             <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
-                            <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>" .
-                            GetLikeHTML($nickname, $postId)
-                            . "
-                            <div class='bookmark'><a href='../tools/bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
+                            <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>
+                            <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div>
+                            <div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                         </div>
                     </div>";                            
 
@@ -247,10 +246,9 @@ function getUserTwoots($User)
                 </div>
                     <div class='your_reaction'>
                     <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
-                    <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>" .
-                    GetLikeHTML($nickname, $postId)
-                    . "
-                        <div class='bookmark'><a href='../tools/bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
+                    <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>
+                    <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div>
+                    <div class='bookmark'><a href='_bookmark.php'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                     </div>
                 </div>";
                     }

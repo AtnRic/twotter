@@ -1,5 +1,5 @@
   <?php
-  include 'tools/_connect.php';
+  include 'tools/_main_tools.php';
         
         setcookie("login", "", time() - 3600);
         setcookie("mdp_hash", "", time() - 3600);

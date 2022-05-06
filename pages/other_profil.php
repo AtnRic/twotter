@@ -15,7 +15,7 @@ require '../tools/header.php'
 <div class="container">
     <!--sidebar-->
     <?php
-    include '../tools/_connect.php';
+    include '../tools/_main_tools.php';
     include '../tools/sidebar.php';
 
 

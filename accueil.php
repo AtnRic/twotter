@@ -67,7 +67,7 @@
 
 
     <?php
-    include 'tools/_connect.php';
+    include 'tools/_main_tools.php';
     // Register.
         $count = 0;
         if(isset($_POST['mdpin']))

@@ -10,7 +10,7 @@ $cssPath_light = "twotter-css/twotter-light.css";
 $cssPath_dark = "twotter-css/twotter-dark.css";
 
 require '../tools/header.php';
-require '../tools/_connect.php';
+require '../tools/_main_tools.php';
 ?>
 
 <body>
