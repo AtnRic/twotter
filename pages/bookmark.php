@@ -10,13 +10,17 @@ $cssPath_light = "twotter-css/twotter-light.css";
 $cssPath_dark = "twotter-css/twotter-dark.css";
 
 require '../tools/header.php'
+
+
+
+
+
 ?>
 
 <body>
 <div class="container">
     <!--sidebar-->
     <?php
-    include '../tools/_main_tools.php';
     include '../tools/sidebar.php' ;
     ?>
     <!--content menu-->
