@@ -1,7 +1,5 @@
 <?php 
 
-include 'like.php';
-
 function connect()
 {
     $hostname="localhost";//à changer
@@ -137,7 +135,6 @@ function getTwoots()
         $userId = $ligne['userId'] . ' ';
         $content = $ligne['content'];
         $date = $ligne['date'];
-        $likeCount = $ligne['likeCount'];
         $mediaPath = $ligne['mediaPath'];
         $postId = $ligne['postId'];
 
