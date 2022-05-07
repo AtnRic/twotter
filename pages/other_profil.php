@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang='fr'>
 <?php
-$pseudo = $_GET['pseudo'];
-
+$pseudo = $_GET['pseudo'];//le pseudo de l'utilisateur à afficher (passé dans l'url)
 $pageName="Profil"; //le nom de la page
-$cssPath = "twotter-css/twotter.css";
-$cssPath_light = "twotter-css/twotter-light.css";
-$cssPath_dark = "twotter-css/twotter-dark.css";
+$cssPath = "twotter-css/twotter.css";//le chemin vers la page css principale
+$cssPath_light = "twotter-css/twotter-light.css";//le chemin vers la page css pour les couleurs claires
+$cssPath_dark = "twotter-css/twotter-dark.css";//le chemin vers la page css pour les couleurs sombres
 
-require '../tools/header.php'
+require '../tools/header.php'//le header de la page
 ?>
 
 <body>
@@ -18,16 +17,13 @@ require '../tools/header.php'
     include '../tools/_main_tools.php';
     include '../tools/sidebar.php';
 
-
     $ban = GetUserBanPath($pseudo);
     $pdp = GetUserPdpPath($pseudo);
     $desc = GetUserDesc($pseudo);
     $name = GetUserName($pseudo);
-    //echo Console("banPath = $ban");
-
 
 if($name = "" || $name == null){
-    $name = $pseudo;
+    $name = $pseudo;//si l'utilisateur n'a pas défini de nom, on affiche son pseudo
 }
 if($desc = "" || $desc == null){
     $desc = "L'utilisateur n'a pas encore défini de description.";
@@ -37,7 +33,7 @@ if($ban = "" || $ban == null){
 }
 ?>
     <?php echo"
-<div class='content_menu'>
+<div class='content_menu'><!--la div centrale-->
     <div class='prefer'>
         <span>
             <a href=''>Profil</a>
@@ -71,10 +67,8 @@ if($ban = "" || $ban == null){
         <div class="others_tweets">
             <!--each person-->
             <?php
-                    //$nickname = $_COOKIE['login'];
-                    //echo Console("Votre Id : " .$_COOKIE['login']);
             try {
-                echo @getUserTwoots($pseudo);
+                echo @getUserTwoots($pseudo);//on affiche les twoots de l'utilisateur
             } catch (Exception $e) {
             }
             ?>
@@ -82,8 +76,8 @@ if($ban = "" || $ban == null){
     </div>
     <!--trending menu-->
     <?php
-    include "../tools/trends.php";
+    include "../tools/trends.php";//les trends
     ?>
 
 </body>
-</html><?php
+</html>

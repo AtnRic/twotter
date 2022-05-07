@@ -16,7 +16,7 @@ require '../tools/header.php'
 <div class="container">
     <!--sidebar-->
     <?php     
-    include '../tools/_main_tools.php';
+    include '../tools/_main_tools.php';//les fonctions générales
     include '../tools/sidebar.php' ;
     ?>
     <!--content menu-->
@@ -42,7 +42,7 @@ require '../tools/header.php'
                 </form>
             </div>
         </div>
-        <!--form nom/prénom/photo profil/bannière-->
+        <!--form nom/description-->
         <div class="change">
             <form action="../tools/desc.php" method="post">
                 <div class="change_center">
@@ -53,6 +53,7 @@ require '../tools/header.php'
             </form>
             <br>
         </div>
+        <!--form photo de profil-->
         <div class="change">
             <form action="../tools/pdp.php" method="post" enctype="multipart/form-data">
                 <div class="change_center">
@@ -63,6 +64,7 @@ require '../tools/header.php'
             </form>
             <br>
         </div>
+        <!--form banière-->
         <div class="change">
             <form action="../tools/ban.php" method='post' enctype="multipart/form-data">
                 <div class="change_center">
@@ -91,6 +93,7 @@ else{
     $themeChoisi="light";
 }
 setcookie('theme', $themeChoisi, time() + (3600*24*365));
+//ne fonctionne pas :
 /*
 if (isset($_GET["theme"])){
     header('Location: settings.php');

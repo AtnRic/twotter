@@ -11,11 +11,14 @@
 }
 .option_menu{
     width: 99.8%;
-    position: static;
+    height: 100vh;
+    position: sticky;
+    top: 0;
 }
 .option_center{
     width: 75%;
     margin: 0 auto;
+    position: sticky;
 }
 .logo img{
     padding: 4% 0 4% 17%
@@ -245,7 +248,7 @@
     color: red;
     text-decoration: none;
 }
-.bookmark a:visited, .bookmark a i:hover{
+.bookmark a i:hover{
     color: var(--tw-blue);
     text-decoration: none;
 }
@@ -393,6 +396,7 @@
     }
     .option_center{
         width: 99.6%;
+        position: sticky;
     }
     .option_center .logo img{
         padding-left: 30px;

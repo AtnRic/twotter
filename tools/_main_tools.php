@@ -1,5 +1,5 @@
 <?php 
-
+/*connection à la base de données*/
 function connect()
 {
     $hostname="localhost";//à changer
@@ -103,6 +103,7 @@ function signin($pseudo): bool
     return false;
 }
 
+/*afficher le logo enregistré en bleu si twoot enregistré*/
 function GetBookHTML($nickname, $postId)
 {
     $connexion = connect();
@@ -117,7 +118,7 @@ function GetBookHTML($nickname, $postId)
         $post = $ligne['postId'];
         if($id == GetUserId($nickname) && $postId == $post)
         {
-            return "<div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p></p></div>";
+            return "<div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark' style='color: #119afb'></i></a><p></p></div>";
         }
     }
     return "<div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p></p></div>";
@@ -125,7 +126,7 @@ function GetBookHTML($nickname, $postId)
 
 
 
-
+/*récupère et affiche les twoots (le plus récent en premier)*/
 function getTwoots()
 {
     $post = "";
@@ -155,7 +156,6 @@ function getTwoots()
         $date = $ligne['date'];
         $mediaPath = $ligne['mediaPath'];
         $postId = $ligne['postId'];
-
 
         $requete2 = "SELECT * FROM `users`";
         $resultat2 = mysqli_query($connexion, $requete2);
@@ -188,11 +188,8 @@ function getTwoots()
                         <div class='your_reaction'>
                             <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
                             <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>
-                            <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div>
-                            
-                            "
-                    . GetBookHTML($nickname, $postId) .
-                    "                        
+                            <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div> 
+                            ". GetBookHTML($nickname, $postId) ."<!--le logo 'enregistrer'-->                
                         </div>
                     </div>";
 
@@ -204,7 +201,7 @@ function getTwoots()
 
 
 
-
+/*récupérer et afficher les twoots d'un seul utilisateur (en paramètre), le twoot le plus récent est affiché en premier*/
 function getUserTwoots($User)
 {
     $connexion = connect();
@@ -252,7 +249,7 @@ function getUserTwoots($User)
                         <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
                     </div>
                 <div class='name_msg'>
-                    <span><p><b>" . GetUserName($nickname) . "</b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
+                    <span><p><b><a href='../pages/other_profil.php?pseudo=$nickname'><b>" . GetUserName($nickname) . "</b></a></b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
                 <div class='msg'>
                     <p>$content</p>
                 </div>
@@ -276,6 +273,7 @@ function getUserTwoots($User)
     return $post;
 }
 
+/*récupère et affiche le twoot dont l'id est passé en paramètre (pour la page bookmark)*/
 function getIdTwoots($rPostId)
 {
     $connexion = connect();
@@ -283,15 +281,8 @@ function getIdTwoots($rPostId)
     $resultat = mysqli_query($connexion, $requete);
     $post = "";
 
-    $requete_limite = 'SELECT MAX(postId) AS Maximum FROM twoots';
-    $resultat_limite = mysqli_query($connexion, $requete_limite);
 
-    if (!$resultat_limite){
-        echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>" ;
-        die();
-    }
-    $limite = mysqli_fetch_assoc($resultat_limite);
-    $limite = (int)$limite['Maximum'];
+
     if ($resultat == NULL){
         return false;
     }
@@ -306,7 +297,6 @@ function getIdTwoots($rPostId)
         $userId = $ligne['userId'] . ' ';
         $content = $ligne['content'];
         $date = $ligne['date'];
-        $likeCount = $ligne['likeCount'];
         $mediaPath = $ligne['mediaPath'];
 
         if($postId == $rPostId) {
@@ -325,7 +315,7 @@ function getIdTwoots($rPostId)
                         <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
                     </div>
                 <div class='name_msg'>
-                    <span><p><b>" . GetUserName($nickname) . "</b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
+                    <span><p><b><a href='../pages/other_profil.php?pseudo=$nickname'><b>" .GetUserName($nickname)." </b></a></b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
                 <div class='msg'>
                     <p>$content</p>
                 </div>
@@ -349,7 +339,7 @@ function getIdTwoots($rPostId)
     return $post;
 }
 
-
+//récupère l'id de l'utilisateur à partir de son pseudo
 function GetUserId($nickname)
 {
     $connexion = connect();
@@ -365,6 +355,7 @@ function GetUserId($nickname)
     return null;
 }
 
+//récupère le chemin vers la photo de profil de l'utilisateur dont le pseudo est passé en paramètre
 function GetUserPdpPath($nickname)
 {
     $connexion = connect();
@@ -387,7 +378,7 @@ function GetUserPdpPath($nickname)
     return NULL;
 
 }
-
+//récupère le chemin vers la bannière de l'utilisateur dont le pseudo est passé en paramètre
 function GetUserBanPath($nickname)
 {
     $connexion = connect();
@@ -401,13 +392,14 @@ function GetUserBanPath($nickname)
                 return "../images/ban/banner.png"; //bannière par défaut
             }
             else{
-                return $ligne['banPath'];
+                return $ligne['banPath'];//le chemin vers la bannière
             }
         }
     }
     return NULL;
 }
 
+//récupère la description de l'utilisateur dont le pseudo est passé en paramètre
 function GetUserDesc($nickname)
 {
     $connexion = connect();
@@ -423,6 +415,7 @@ function GetUserDesc($nickname)
     return null;
 }
 
+//récupère le nom de l'utilisateur avec le pseudo passé en paramètre
 function GetUserName($nickname)
 {
     $connexion = connect();
@@ -438,6 +431,7 @@ function GetUserName($nickname)
     return null;
 }
 
+//permet d'afficher des infos dans la console (debug)
 function Console($data): string
 {
     $start = array("'", "<p>", "</p>");

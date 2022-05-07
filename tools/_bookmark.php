@@ -14,7 +14,6 @@ function getbook()
        return false;
     }
     while ($ligne = $resultat -> fetch_assoc()) {
-        $id = $ligne['userId']; 
         $post = $post . getIdTwoots($ligne['postId']);
     }    
     return $post;
