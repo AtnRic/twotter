@@ -23,7 +23,7 @@ require '../tools/header.php'
     $pdp = GetUserPdpPath($pseudo);
     $desc = GetUserDesc($pseudo);
     $name = GetUserName($pseudo);
-
+    //echo Console("banPath = $ban");
 
 
 if($name = "" || $name == null){
@@ -33,45 +33,50 @@ if($desc = "" || $desc == null){
     $desc = "L'utilisateur n'a pas encore défini de description.";
 }
 if($ban = "" || $ban == null){
-    $ban = "../images/banner.png";
+    $ban = "../images/ban/banner.png";
 }
-    echo "<div class='content_menu'>
-        <div class='prefer'>
-                <span>
-                    <a href=''>Profil</a>
-                </span>
+?>
+    <?php echo"
+<div class='content_menu'>
+    <div class='prefer'>
+        <span>
+            <a href=''>Profil</a>
+        </span>
+    </div>
+    <div class='profile_box'>
+        <div class='banner'>
+        <!--bannière-->
+           <style>.banner{
+                  height: 200px;
+                  width: 100%;
+                  background-position: center;
+                  background-size: cover;
+                  background-image: url(". GetUserBanPath($pseudo) .");
+           }
+           </style>
         </div>
-        <div class='profile_box'>
-            <div class='banner'>
-                <!--bannière-->
-                <style>.banner{
-                        height: 200px;
-                        width: 100%;
-                        background-position: center;
-                        background-size: cover;
-                        background-image: url($ban)
-                    }
-                </style>
-            </div>
-            <div class='other_profile' id='profile_img'>
-                <!--photo profil-->
-                <img src='$pdp' alt='photo de profil'>
-            </div>
-            <div class='name_msg' id='profil_name'>
-                <span><p><b>". GetUserName($pseudo) ."</b><i class='fa-solid fa-badge-check'></i>@$pseudo</p></span>
-                <!--description-->
+        
+        <div class='other_profile' id='profile_img'>
+           <!--photo profil-->
+           <img src='$pdp' alt='photo de profil'>
+        </div>
+        <div class='name_msg' id='profil_name'>
+            <span><p><b>". GetUserName($pseudo) ."</b><i class='fa-solid fa-badge-check'></i>@$pseudo</p></span>
+            <!--description-->
                 <div class='msg'>
-                    <p>". GetUserDesc($pseudo) . "</p>
+                    <p>" . GetUserDesc($pseudo) . "</p>
                 </div>
             </div>
-        </div>";
-    ?>
+        </div>";?>
         <div class="others_tweets">
             <!--each person-->
             <?php
                     //$nickname = $_COOKIE['login'];
                     //echo Console("Votre Id : " .$_COOKIE['login']);
-                    echo @getUserTwoots($pseudo);
+            try {
+                echo @getUserTwoots($pseudo);
+            } catch (Exception $e) {
+            }
             ?>
         </div>
     </div>

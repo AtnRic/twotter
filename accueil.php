@@ -57,7 +57,7 @@
             <h1>Connectez-vous</h1>
             <form action="" method='POST'>
                 <label for="login"></label><input type="text" id="login" name="login" placeholder="Pseudo" autofocus required><br>
-                <label for="mpdco"></label><input type="password" id="mdpco" name="mdpco" placeholder="Mot de passe" required><br>
+                <label for="mdpco"></label><input type="password" id="mdpco" name="mdpco" placeholder="Mot de passe" required><br>
             <input type="submit" class='sub' value="Envoyer">
             </form> 
             <a class="mdp" href="pages/mdp.html">Mot de passe oublié ?</a>  
@@ -165,9 +165,9 @@
         
         if($count == 3)
         {
-            $sign = signup($_POST['pseudo'], $_POST['mdpin'], $_POST['verifmdp']);
+            $sign = signup($_POST['pseudo']);
 
-            if($sign == true){                
+            if($sign){
             echo Console("Connected to twooter.");
             $count++;
             }  
@@ -197,7 +197,6 @@
                 setcookie("login", $login, time() + (3600 * 24 * 365));
                 setcookie("mdp_hash", $mdp_hash, time() + (3600 * 24 * 365));
             }
-            //ajouter utilisateur dans la base de données
             $newURL = "pages/twotter.php";
             header('Location: '.$newURL);
             die();
@@ -225,8 +224,8 @@
 
                 if($count == 1)
                 {                        
-                    $sign = signin($_POST['login'], $_POST['mdpco']);
-                    if($sign == true){
+                    $sign = signin($_POST['login']);
+                    if($sign){
                         $count++;
                         echo Console("Connected to twooter.");
                     }   

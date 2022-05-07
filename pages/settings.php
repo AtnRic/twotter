@@ -48,24 +48,26 @@ require '../tools/header.php'
                 <div class="change_center">
                     <label for="nom"></label><input type="text" id="nom" name="nom" placeholder="Nom"><br>
                     <label for="desc"></label><input type="text" id="desc" name="desc" placeholder="Description"><br>
-                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
+                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier" style="margin-left: 50px">
                 </div>
             </form>
+            <br>
         </div>
         <div class="change">
             <form action="../tools/pdp.php" method="post" enctype="multipart/form-data">
                 <div class="change_center">
-                    <span class="label-file">Photo de profil :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
-                    <input id="file" class="input-file" type="file" name="fileP"><br>
-                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier">
+                    <span class="label-file1">Photo de profil :<label for="file"><br></i></label></span>
+                    <input id="file1" class="input-file1" type="file" name="fileP"><br>
+                    <input type="submit" class="sub" id="sub2" name='modif' value="Modifier" style="margin-left: 50px">
                 </div>
             </form>
+            <br>
         </div>
         <div class="change">
             <form action="../tools/ban.php" method='post' enctype="multipart/form-data">
                 <div class="change_center">
-                    <span class="label-file">Bannière :<label for="file"><br><i class="fa-solid fa-image"></i></label></span>
-                    <input id="file2" class="input-file" type="file" name="fileB"><br>
+                    <span class="label-file1">Bannière :<label for="file"><br></label></span>
+                    <input id="file2" class="input-file1" type="file" name="fileB"><br>
                     <input type="submit" class="sub" id="sub3" name='modif2' value="Modifier">
                 </div>
             </form>

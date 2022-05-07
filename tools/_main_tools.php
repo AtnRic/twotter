@@ -20,11 +20,11 @@ function connect()
 }
 
 //vérification d'un certain pattern de mdp
-function passwd($mdp)
+function passwd($mdp): bool
 {
     $majuscule = preg_match('@[A-Z]@', $mdp);
     $minuscule = preg_match('@[a-z]@', $mdp);
-    $chiffre = preg_match('@[0-9]@', $mdp);
+    $chiffre = preg_match('@\d@', $mdp);
 
     if(!$majuscule || !$minuscule || !$chiffre || strlen($mdp) < 8){
         return false;
@@ -35,7 +35,7 @@ function passwd($mdp)
 }
 
 //vérifier que les mots de passe (inscription) sont identiques :
-function verifpasswd($mdp, $verif)
+function verifpasswd($mdp, $verif): bool
 {
         if($verif==$mdp){
             return true;
@@ -45,18 +45,18 @@ function verifpasswd($mdp, $verif)
         }
 }
 
-function signup($pseudo, $mdp, $cmdp)
+
+function signup($pseudo): bool
 {
     $connexion = connect();
 
     $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
+
     if ( $resultat == NULL){
        echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
        return false;
     }
-
-    $find = false;
 
     while ($ligne = $resultat -> fetch_assoc()) {
         $nickname = $ligne['nickname']; 
@@ -64,69 +64,49 @@ function signup($pseudo, $mdp, $cmdp)
             return false;
         }
     }
-    // Voir comment créer une table.
     $mdp_hash = hash('sha256', $_POST['mdpin']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
-    $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp_hash')"; //La requere SQL
+    $requete2 = "INSERT INTO `users` (`nickname`, `password`) VALUES ('$pseudo', '$mdp_hash')"; //La requete SQL
     $resultat2 = mysqli_query($connexion, $requete2); //Executer la requete
     if (!$resultat2){
         echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
         return false;
-
     }
     else{
-        return (boolean)true;
+        return true;
     }
 }
-				
-function signin($pseudo, $mdp)
+
+
+function signin($pseudo): bool
 {
     $connexion = connect();
     $requete = "SELECT * FROM `users`";
     $resultat = mysqli_query($connexion, $requete);
     if ( $resultat == NULL){
-        //return "<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>" ;
-        return (boolean)false;
+        return false;
     }
     $mdp_hash = hash('sha256', $_POST['mdpco']);//on fait un hash du mot de passe pour ne pas stocker le mot de passe en clair
-    $find = false;
+
 
     while ($ligne = $resultat -> fetch_assoc()) {
         $nickname = $ligne['nickname']; 
-        $password = $ligne['password']; 
-        $id = $ligne['id'];
+        $password = $ligne['password'];
         if($nickname == $pseudo){
             if($password == $mdp_hash){
-                $find = true;
-                return (boolean)true;
+                return true;
             }
             else{
-                return (boolean)false;
+                return false;
             }
         }
     }
-    return (boolean)false;
+    return false;
 }
 
-function GetBookHTML($nickname, $postId)
-{
-    $connexion = connect();
-    $requete = "SELECT * FROM `books`";
-    $resultat = mysqli_query($connexion, $requete);
-    if ($resultat == NULL){
-       echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-       return false;
-    }
-    while ($ligne = $resultat -> fetch_assoc()) {
-        $id = $ligne['userId']; 
-        $post = $ligne['postId'];
-        if($id == GetUserId($nickname) && $postId == $post)
-        {     
-            return "<div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p></p></div>";
-        }
-    }                    
-    return "<div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p></p></div>";
-}
 
+/**
+ * @throws Exception
+ */
 function getTwoots()
 {
     $post = "";
@@ -142,7 +122,7 @@ function getTwoots()
     $limite = (int)$limite['Maximum'];
 
     for($i = $limite; $i >= 1; $i--) {
-        $requete = "SELECT * FROM twoots  WHERE postId = '{$i}'";
+        $requete = "SELECT * FROM twoots  WHERE postId = '$i'";
         $resultat = mysqli_query($connexion, $requete);
 
         if (!$resultat) {
@@ -157,7 +137,6 @@ function getTwoots()
         $mediaPath = $ligne['mediaPath'];
         $postId = $ligne['postId'];
 
-        
         $requete2 = "SELECT * FROM `users`";
         $resultat2 = mysqli_query($connexion, $requete2);
         if ($resultat2 == NULL) {
@@ -172,30 +151,26 @@ function getTwoots()
                 }
                 $post .= "<div class='other_tweet'>
                     <div class='profil_msg'>
-                        <div class='other_profile'>
-                            <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
+                            <div class='other_profile'>
+                                <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
+                            </div>
+                        <div class='name_msg'>
+                            <span><p><a href='../pages/other_profil.php?pseudo=$nickname'><b>" . $name . "</b></a><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
+                                <div class='msg'>
+                                    <p>$content</p>
+                                </div>
                         </div>
-                    <div class='name_msg'>
-                    
-                        <span><p><a href='../pages/other_profil.php?pseudo=$nickname'><b>" . $name . "</b></a><i class='fa-solid fa-badge-check'></i>@$nickname<small>$date</small></p></span>
-                    <div class='msg'>
-                        <p>$content</p>
-                    </div>
-                    </div>
                     </div>
                     <div class='image_video'>
-                    <img src=$mediaPath alt=''>
+                        <img src=$mediaPath alt=''>
                     </div>
-                        <div class='your_reaction'>
+                       <div class='your_reaction'>
                             <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
                             <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>
                             <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div>
-                            "
-                            . GetBookHTML($nickname, $postId) . 
-                            "                        
+                            <div class='bookmark'><a href='../tools/_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                         </div>
-                    </div>";                            
-
+                    </div>";
             }
         }
     }
@@ -203,6 +178,9 @@ function getTwoots()
 }
 
 
+/**
+ * @throws Exception
+ */
 function getUserTwoots($User)
 {
     $connexion = connect();
@@ -224,17 +202,14 @@ function getUserTwoots($User)
     }
 
     for($i = $limite; $i >= 1; $i--) {
-        $requete = "SELECT * FROM twoots  WHERE postId = '{$i}'";
+        $requete = "SELECT * FROM twoots  WHERE postId = '$i'";
         $resultat = mysqli_query($connexion, $requete);
-
         if ($resultat) {
             $ligne = $resultat->fetch_assoc();
-
             $postId = $ligne['postId'];
             $userId = $ligne['userId'] . ' ';
             $content = $ligne['content'];
             $date = $ligne['date'];
-            $likeCount = $ligne['likeCount'];
             $mediaPath = $ligne['mediaPath'];
 
             if($userId == GetUserId($User)) {
@@ -266,9 +241,7 @@ function getUserTwoots($User)
                     <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
                     <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>
                     <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div>
-                    "
-                    . GetBookHTML($nickname, $postId) . 
-                    "
+                    <div class='bookmark'><a href='_bookmark.php/?postId=$postId'><i class='fa-solid fa-bookmark'></i></a><p>0</p></div>
                     </div>
                 </div>";
                     }
@@ -276,79 +249,6 @@ function getUserTwoots($User)
             }
         }
     }
-    return $post;
-}
-
-function getIdTwoots($rPostId)
-{
-    $connexion = connect();
-    $requete = "SELECT * FROM `twoots`";
-    $resultat = mysqli_query($connexion, $requete);
-    $post = "";
-
-    $requete_limite = 'SELECT MAX(postId) AS Maximum FROM twoots';
-    $resultat_limite = mysqli_query($connexion, $requete_limite);
-
-    if (!$resultat_limite){
-        echo "<p>Erreur d'exécution de la requete :".mysqli_error($connexion)."</p>" ;
-        die();
-    }
-    $limite = mysqli_fetch_assoc($resultat_limite);
-    $limite = (int)$limite['Maximum'];
-    if ($resultat == NULL){
-        return false;
-    }
-
-        $requete = "SELECT * FROM twoots  WHERE postId = '{$rPostId}'";
-        $resultat = mysqli_query($connexion, $requete);
-
-        if ($resultat) {
-            $ligne = $resultat->fetch_assoc();
-
-            $postId = $ligne['postId'];
-            $userId = $ligne['userId'] . ' ';
-            $content = $ligne['content'];
-            $date = $ligne['date'];
-            $likeCount = $ligne['likeCount'];
-            $mediaPath = $ligne['mediaPath'];
-
-            if($postId == $rPostId) {
-                $requete2 = "SELECT * FROM `users`";
-                $resultat2 = mysqli_query($connexion, $requete2);
-                if ($resultat2 == NULL) {
-                    return "<p>Erreur d'exécution de la requete : " . mysqli_error($connexion) . "</p>";
-                }
-                while ($ligne2 = $resultat2->fetch_assoc()) {
-                    if ($ligne2['id'] == $userId) {
-                        $nickname = $ligne2['nickname'];
-                        $post .= "<div class='other_tweet'>
-                <div class='profil_msg'>
-                    <div class='other_profile'>
-                <!--photo profil-->
-                        <img src=" . GetUserPdpPath($nickname) . " alt='photo de profil'>
-                    </div>
-                <div class='name_msg'>
-                    <span><p><b>" . GetUserName($nickname) . "</b><i class='fa-solid fa-badge-check'></i>@$nickname <small>$date</small></p></span>
-                <div class='msg'>
-                    <p>$content</p>
-                </div>
-                </div>
-                </div>
-                <div class='image_video'>
-                <img src=$mediaPath alt=''>
-                </div>
-                    <div class='your_reaction'>
-                    <div class='comment'><i class='fa-solid fa-comment'></i><p>". random_int(0, 100) ."</p></div>
-                    <div class='retweet'><i class='fa-solid fa-retweet'></i><p>". random_int(0, 100) ."</p></div>
-                    <div class='like'><i class='fa-solid fa-heart'></i></a><p>". random_int(0, 100) ."</p></div>"
-                    . GetBookHTML($nickname, $postId) . 
-                     "
-                    </div>
-                </div>";
-                    }
-                }
-            }
-        }
     return $post;
 }
 
@@ -398,11 +298,16 @@ function GetUserBanPath($nickname)
     while ($ligne = $resultat -> fetch_assoc()) 
     {
         if($ligne['nickname'] == $nickname)
-        {    
-            return $ligne['banPath'];
+        {
+            if($ligne['banPath']==NULL){
+                return "../images/ban/banner.png"; //bannière par défaut
+            }
+            else{
+                return $ligne['banPath'];
+            }
         }
     }
-    return null;
+    return NULL;
 }
 
 function GetUserDesc($nickname)
@@ -435,11 +340,10 @@ function GetUserName($nickname)
     return null;
 }
 
-function Console($data) 
+function Console($data): string
 {
     $start = array("'", "<p>", "</p>");
     $end   = array(" ", "", "");
     $new = str_replace($start, $end, $data);
     return "<script> console.log('$new'); </script>";
 }
-?>

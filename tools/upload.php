@@ -13,14 +13,11 @@
         {   //vérifie la taille du fichier
             move_uploaded_file($_FILES["file"]["tmp_name"], $File);//on déplace l'image dans le dossier
         }
-
-        //return dans popup ?
-        //else echo "fichier trop lourd";
     }
 
     if(!isset($_POST['twoot']) || !isset($_COOKIE['login']))
     {
-        return (boolean)false;
+        return false;
     }
     else
     {
@@ -46,23 +43,8 @@
         if ($resultat == NULL)
         {
             echo Console(mysqli_error($connexion));
-            return (boolean)false;
+            return false;
         }
     }
     header('Location: ../pages/twotter.php');
-
-//else echo "extension non valide";
-?>
-
-
-<!-- Script php d'affichage des images -->
-<?php
-/*
-if($handle = opendir("images/")){
-    $folder = scandir("./images", 1);//1 car on part du dossier actuel -> on va du dossier enfant au dossier parent
-    for($i = 0; $i < count($folder) - 2; $i++) {//on va jusqu'à folder-2 car dossier actuel + dossier parent
-        echo"<img src='images/$folder[$i]'>";
-    }
-    closedir($handle);
-}*/
 ?>

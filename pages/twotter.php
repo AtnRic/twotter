@@ -58,6 +58,5 @@ require '../tools/_main_tools.php';
         include '../tools/trends.php';
         ?>
     </div>
-
 </body>
 </html>

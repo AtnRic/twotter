@@ -7,7 +7,7 @@
         $resultat = mysqli_query($connexion, $requete);
         if ($resultat == NULL){
             echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-            return (boolean)false;
+            return false;
         }
 
     if(isset($_POST['desc']) && !empty($_POST['desc'])){
@@ -22,7 +22,7 @@
                 $resultat = mysqli_query($connexion, $requete2);
                 if ($resultat == NULL){
                     echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-                    return (boolean)false;
+                    return false;
                 }
     }
 
@@ -39,7 +39,7 @@
                 $resultat = mysqli_query($connexion, $requete2);
                 if ($resultat == NULL){
                     echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-                    return (boolean)false;
+                    return false;
                 }
     }
     $nickname = $_COOKIE['login'];

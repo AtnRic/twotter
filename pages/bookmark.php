@@ -11,10 +11,6 @@ $cssPath_dark = "twotter-css/twotter-dark.css";
 
 require '../tools/header.php'
 
-
-
-
-
 ?>
 
 <body>

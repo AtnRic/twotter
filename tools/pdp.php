@@ -23,7 +23,7 @@
         $resultat = mysqli_query($connexion, $requete);
         if ($resultat == NULL){
             echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-            return (boolean)false;
+            return false;
         }
         while ($ligne = $resultat -> fetch_assoc()) 
         {
@@ -35,7 +35,7 @@
                 $resultat = mysqli_query($connexion, $requete2);
                 if ($resultat == NULL){
                     echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");
-                    return (boolean)false;
+                    return false;
                 }
                 break;
             }

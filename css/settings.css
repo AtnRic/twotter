@@ -52,7 +52,6 @@
 .sub{
     margin-top: 20px;
     margin-left: -20px;
-
     width: 100px;
     height: 30px;
     color: white;
@@ -64,9 +63,8 @@
     margin: auto;
 }
 .change_center{
-    margin-top: 10px;
     width: 220px;
-    margin: auto;
+    margin: 10px auto auto auto;
 }
 .change form .change_center #nom, .change form .change_center #desc {
     width: 200px;
@@ -76,6 +74,6 @@
     padding: 10px;
     border-color: var(--tw-blue);
 }
-.sub#sub2{
-     margin-left: 50px;
- }
+#sub3{
+    margin-left: 50px;
+}
