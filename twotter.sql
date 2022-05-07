@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 06 mai 2022 à 13:50
+-- Généré le : sam. 07 mai 2022 à 14:29
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `twotter`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `books`
+--
+
+CREATE TABLE `books` (
+  `userId` int(64) NOT NULL,
+  `postId` int(64) NOT NULL,
+  `id` int(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `books`
+--
+
+INSERT INTO `books` (`userId`, `postId`, `id`) VALUES
+(10, 42, 22),
+(10, 40, 23),
+(10, 34, 24);
 
 -- --------------------------------------------------------
 
@@ -65,7 +86,8 @@ INSERT INTO `twoots` (`userId`, `postId`, `parentId`, `content`, `date`, `likeCo
 (9, 33, 0, 'Je vais vous découper le gras du cul, ça vous fera ça de moins à trimbaler', '05.02.22', 0, '../images/media/en-garde-ma-mignonne.gif'),
 (9, 34, 0, 'Le plus important c\'est les valeurs', '05.02.22', 0, '../images/media/'),
 (9, 35, 0, 'Quand t\'essaie de regarder toutes les branches d\'un arbre binaire :', '05.02.22', 0, '../images/media/téléchargé.jpg'),
-(9, 36, 0, 'Les températures, c\'est rassurant', '05.02.22', 0, '../images/media/');
+(9, 36, 0, 'Les températures, c\'est rassurant', '05.02.22', 0, '../images/media/'),
+(9, 37, 0, 'yolooo !', '05.07.22', 0, '../images/media/debile-et-innatendu.gif');
 
 -- --------------------------------------------------------
 
@@ -88,7 +110,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`nickname`, `password`, `id`, `pdpPath`, `banPath`, `Nom`, `desc`) VALUES
-('Antoine', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 9, '../images/pp/vous-etes-des-malades.webp', NULL, 'Antoine', 'On est fort ! ...en pommes'),
+('Antoine', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 9, '../images/pp/vous-etes-des-malades.webp', '../images/ban/en-garde-ma-mignonne.gif', 'Antoine', 'On est fort ! ...en pommes'),
 ('AdrVrg', 'db96f67f5285c29f52734693296eeb3f71dff4ae3d18ac2e5d36d0364ced7b4a', 10, '../images/pp/merde-kaamelott.gif', NULL, 'Patrick Balkany', 'J\'apprécie les fruits au sirop. ON EST FORT... en pommes.'),
 ('Karadoc', 'dc6d0026cfefaac20e111970c06253afed02992f3549126eb781bf969a6ae09b', 11, '../images/pp/karadoc.png', NULL, 'Karadoc de Vannes', 'La neige qui pourdoie dans la solitude de notre enfance'),
 ('Léodagan', 'a55b4047a44f654dec81f4a29d9bece204a4b8e9179f7e282abfc51c8b6c28eb', 12, '../images/pp/léodagan2.PNG', NULL, 'Léodagan de Carmélide', 'Merde.');
@@ -117,7 +139,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `twoots`
 --
 ALTER TABLE `twoots`
-  MODIFY `postId` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `postId` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `users`
