@@ -2,12 +2,13 @@
 
 include '_main_tools.php';
 
-
+/*récupère les twoots de la table books enregistré par un utilisateur*/
 function getbook()
 {
     $post = "";
     $connexion = connect();
-    $requete = "SELECT * FROM `books`";
+    $userIdDb = GetUserId($_COOKIE['login']);
+    $requete = "SELECT * FROM `books` WHERE userId = $userIdDb";
     $resultat = mysqli_query($connexion, $requete);
     if ($resultat == NULL){
        echo Console("<p>Erreur d'exécution de la requete : ".mysqli_error($connexion)."</p>");

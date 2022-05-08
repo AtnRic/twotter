@@ -1,4 +1,3 @@
-<!-- Script php d'enregistrement des images-->
 <?php
     include '_main_tools.php';
     echo Console($_FILES["fileB"]["name"]);

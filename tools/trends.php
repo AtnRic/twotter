@@ -32,10 +32,10 @@ echo "
                                     <p>twoot trend</p>
                                 </div>
                                 <div class='subject'>
-                                    <p>Hello world (subject)</p>
+                                    <p>Hello world</p>
                                 </div>
                                 <div class='trend_with'>
-                                    <p>trending with : <br><a href=''>#Machinàremplacer</a>, <a href=''>#AutreTrucARenplacer</a></p>
+                                    <p>trending with : <br><a href=''>#PHP</a>, <a href=''>#MySQL</a></p>
                                 </div>
                             </div>
                         </div>
