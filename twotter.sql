@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 07 mai 2022 à 19:15
+-- Généré le : Dim 08 mai 2022 à 20:12
 -- Version du serveur :  5.7.24
 -- Version de PHP : 8.0.1
 
@@ -32,14 +32,6 @@ CREATE TABLE `books` (
   `postId` int(64) DEFAULT NULL,
   `id` int(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `books`
---
-
-INSERT INTO `books` (`userId`, `postId`, `id`) VALUES
-(9, 4, 12),
-(9, 5, 13);
 
 -- --------------------------------------------------------
 
@@ -78,7 +70,6 @@ INSERT INTO `twoots` (`userId`, `postId`, `parentId`, `content`, `date`, `likeCo
 (9, 29, 0, 'Je ne sais pas compter', '04.28.22', 0, '../images/media/ben-moi-non-plus.gif'),
 (12, 32, 0, 'Merde.', '04.29.22', 0, '../images/media/'),
 (9, 34, 0, 'Le plus important c\'est les valeurs', '05.02.22', 0, '../images/media/'),
-(9, 35, 0, 'Quand t\'essaie de regarder toutes les branches d\'un arbre binaire :', '05.02.22', 0, '../images/media/téléchargé.jpg'),
 (11, 38, 0, 'Le gras, c\'est la vie', '05.07.22', 0, '../images/media/'),
 (9, 39, 0, 'Il faut plutôt y voir un élan...', '05.07.22', 0, '../images/media/'),
 (11, 40, 0, 'Par exemple, vous prenez aujourd’hui. Vous comptez sept jours. Ça vous emmène dans une semaine. Et bien on sera exactement le même jour qu’aujourd’hui… À une vache près, hein… C’est pas une science exacte.', '05.07.22', 0, '../images/media/');
@@ -139,7 +130,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `twoots`
