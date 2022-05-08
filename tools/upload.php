@@ -27,16 +27,11 @@
 
         $userId = GetUserId($_COOKIE['login']);
         if($userId == null){
-            echo Console("Merde");
+            echo Console("erreur");
         }
-        $date = date("m.d.y");   
+        $date = date("m.d.y");
 
-        $hostname="localhost";//à changer
-        $username="root";//nom d'utilisateur pour acc�der au serveur (root)
-        $password="root"; //mot de passe pour acc�der au serveur (root)
-        $dbname="twotter"; //nom de la base de donn�es
-        $connexion = mysqli_connect($hostname, $username, $password, $dbname);
-        //$requete = "INSERT INTO `twoots` (`parentId`, `content`, `date`, `likeCount`, `mediaPath`) VALUES ('0', $content, $date, '0', '$File')";
+        $connexion = connect();
         $requete = "INSERT INTO `twoots` (`userId`, `postId`, `parentId`, `content`, `date`, `likeCount`, `mediaPath`) VALUES ('$userId', '0', '0', '$content', '$date', '0', '$File')";
         $resultat = mysqli_query($connexion, $requete);    
         echo Console(mysqli_error($connexion));

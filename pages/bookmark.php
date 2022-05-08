@@ -3,7 +3,7 @@
 
 <!--le header se trouve dans le fichier header.php-->
 <?php
-$pageName="Paramètres"; //le nom de la page
+$pageName="Enregistré"; //le nom de la page
 $cssPath = "twotter-css/twotter.css";
 $cssPath2 = "settings.css";
 $cssPath_light = "twotter-css/twotter-light.css";
